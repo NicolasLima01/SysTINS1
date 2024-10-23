@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -53,7 +54,7 @@ namespace SysTINSClass
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_insert";
             cmd.Parameters.Add("spnome", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value=Nome;
             cmd.Parameters.AddWithValue("spemail", Email);
@@ -93,6 +94,39 @@ namespace SysTINSClass
                             Nivel.ObterPorID(dr.GetInt32(4)), dr.GetBoolean(5)));
             }
             return lista;
+        }
+        //Atualizar
+        public bool Atualizar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_altera";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);            
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
+            //object[,] param = { { "spid", Id } };
+            //cmd.Parameters.AddRange(); Espera uma array
+        }
+        //efetuar login
+        public static Usuario EfetuarLogin(string email, string senha)
+        {
+            Usuario usuario = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = md5('{senha}') and ativo = 1";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read()) 
+            {
+                usuario = new(
+                            dr.GetInt32(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3),
+                            Nivel.ObterPorID(dr.GetInt32(4)),
+                            dr.GetBoolean(5)
+                            );
+            }
+            return usuario;
         }
     }
 }

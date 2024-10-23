@@ -47,19 +47,18 @@ namespace SysTINSApp
         private void caixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            FrmUsuarios frmUsuarios = new();
-            frmUsuarios.MdiParent = this;
-            frmUsuarios.Show();
-
-        }
+        }      
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void novoToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            FrmUsuarios frmUsuarios = new();
+            frmUsuarios.MdiParent = this;
+            frmUsuarios.Show();
         }
     }
 }
