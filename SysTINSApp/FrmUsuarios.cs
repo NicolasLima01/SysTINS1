@@ -61,14 +61,37 @@ namespace SysTINSApp
             }
         }
 
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void chkAtivo_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void chkAtivo_CheckedChanged(object sender, EventArgs e)
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int linhaAtual = dgvUsuarios.CurrentRow.Index;
+            int idUser = Convert.ToInt32(dgvUsuarios.Rows[linhaAtual].Cells[0].Value);
+            var usuario = Usuario.ObterPorID(idUser);
+            txtId.Text = usuario.Id.ToString();
+            txtNome.Text = usuario.Nome;
+            txtEmail.Text = usuario.Email;
+            chkAtivo.Checked = usuario.Ativo;
+            cmbNivel.SelectedValue = usuario.Nivel.Id;
+            btnAtualizar.Enabled = true;
+            //MessageBox.Show(linhaAtual.ToString());
+        }
 
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new();
+            usuario.Id = int.Parse(txtId.Text);
+            usuario.Nome = txtNome.Text;
+            usuario.Senha = txtSenha.Text;
+            usuario.Nivel = Nivel.ObterPorID(Convert.ToInt32(cmbNivel.SelectedValue));
+            if (usuario.Atualizar())
+            {
+                CarregaGridUsuarios();
+                MessageBox.Show("Usuario atualizado com sucesso");
+            }
         }
     }
 }

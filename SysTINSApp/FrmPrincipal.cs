@@ -21,10 +21,16 @@ namespace SysTINSApp
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             Hide();
-            FrmLogin frmLogin= new();
-            frmLogin.ShowDialog();
+            //FrmLogin frmLogin = new();
+            //if (frmLogin.ShowDialog() == DialogResult.OK)
+            //{
+            //    tsslUsuario.Text = Program.UsuarioLogado.Nome + " - " + Program.UsuarioLogado.Nivel.Nome;
+            //    Show();
+            //}
+            //else
+            //    Application.Exit();
             Show();
-        }      
+        }
 
         private void novoToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {

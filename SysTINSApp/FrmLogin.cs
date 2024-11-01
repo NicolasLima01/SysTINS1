@@ -13,6 +13,7 @@ namespace SysTINSApp
 {
     public partial class FrmLogin : Form
     {
+        int tentativa = 0;
         public FrmLogin()
         {
             InitializeComponent();
@@ -29,11 +30,24 @@ namespace SysTINSApp
             var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text);
             if (usuario.Id > 0) 
             {
-                Close();
+                //Caso o login obteve sucesso
+                Program.UsuarioLogado = usuario;
+                this.DialogResult = DialogResult.OK;
+                Close();               
             }
             else
             {
-                lblMensagem.Text = "Usuario e /ou senha inválidos";
+                tentativa++;
+                if (tentativa < 3)
+                {
+                    lblMensagem.Text = $"Usuário e/ou senha inválidos \n Restam {tentativa + 1}/3 tentativas ";
+                }
+                else
+                {
+                    lblMensagem.Text = "Número de tentativas de login excedido!";
+                    this.DialogResult = DialogResult.No;
+                    Close();
+                }
             }
             //Usuario usuario = new();
             //usuario.Email = ;
@@ -43,7 +57,7 @@ namespace SysTINSApp
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
