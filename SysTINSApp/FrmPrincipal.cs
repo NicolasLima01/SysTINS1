@@ -20,45 +20,17 @@ namespace SysTINSApp
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            //var cmd = Banco.Abrir();
-            //cmd.CommandText = "select * from niveis where id = 1";
-            //var dr = cmd.ExecuteReader();
-            //if (dr.Read())
-            //{
-            //    MessageBox.Show($"Olá {dr.GetString(1)}");
-            //}
-        }
-
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void movimentoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void operaçãoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void caixaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            Hide();
+            FrmLogin frmLogin= new();
+            frmLogin.ShowDialog();
+            Show();
         }      
-
-        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void novoToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
-            FrmUsuarios frmUsuarios = new();
-            frmUsuarios.MdiParent = this;
-            frmUsuarios.Show();
+            FrmUsuarios frmUsuarios = new(); //cria uma instância (objeto) do FrmUsuarios
+            frmUsuarios.MdiParent = this; //associa esta instancia ao container (MDI) FrmPrincipal
+            frmUsuarios.Show(); //Exibe o form Usuarios na janela do sistema
         }
     }
 }
