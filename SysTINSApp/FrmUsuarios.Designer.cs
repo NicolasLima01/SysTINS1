@@ -37,7 +37,7 @@
             clnEmail = new DataGridViewTextBoxColumn();
             clnNivel = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewCheckBoxColumn();
-            label1 = new Label();
+            lblId = new Label();
             lblNome = new Label();
             lblEmail = new Label();
             lblSenha = new Label();
@@ -139,14 +139,14 @@
             clnAtivo.ReadOnly = true;
             clnAtivo.Width = 40;
             // 
-            // label1
+            // lblId
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(201, 58);
-            label1.Name = "label1";
-            label1.Size = new Size(18, 15);
-            label1.TabIndex = 4;
-            label1.Text = "ID";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(201, 58);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(18, 15);
+            lblId.TabIndex = 4;
+            lblId.Text = "ID";
             // 
             // lblNome
             // 
@@ -271,7 +271,7 @@
             Controls.Add(lblSenha);
             Controls.Add(lblEmail);
             Controls.Add(lblNome);
-            Controls.Add(label1);
+            Controls.Add(lblId);
             Controls.Add(dgvUsuarios);
             Controls.Add(btnAtualizar);
             Controls.Add(btnConsultar);
@@ -290,7 +290,7 @@
         private Button btnConsultar;
         private Button btnAtualizar;
         private DataGridView dgvUsuarios;
-        private Label label1;
+        private Label lblId;
         private Label lblNome;
         private Label lblEmail;
         private Label lblSenha;
