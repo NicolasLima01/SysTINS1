@@ -10,7 +10,11 @@ namespace SysTINSClass
     //classe Banco é a nossa classe de conexão 
     public static class Banco //static pois não precisaremos criar uma instância de Banco para conectar às nossas bases
     {
-        public static MySqlCommand Abrir() //Método para abrir conexão
+        /// <summary>
+        /// Método para abrir conexão
+        /// </summary>
+        /// <returns></returns>
+        public static MySqlCommand Abrir() 
         {
             string strcon = @"Server=127.0.0.1;database=systinsdb01;user=root;password=";
             MySqlConnection cn = new(strcon);

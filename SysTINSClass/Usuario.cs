@@ -70,8 +70,8 @@ namespace SysTINSClass
         //ObterPorId
         public static Usuario ObterPorID(int id)
         {
-            Usuario usuario = new();
-            var cmd = Banco.Abrir();
+            Usuario usuario = new(); // Cria novo objeto usuario
+            var cmd = Banco.Abrir(); 
             cmd.CommandText = $"select * from usuarios where id = {id}";
             var dr = cmd.ExecuteReader();
             if(dr.Read()) 
