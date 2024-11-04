@@ -11,11 +11,13 @@ namespace SysTINSClass
     public class Categoria
     {
         //Propriedades/atributos
+
         public int Id { get; set; }
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
 
         //Métodos Construtores
+
         public Categoria() { }
         public Categoria(int id, string? nome)
         {
@@ -44,6 +46,7 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             var dr = cmd.ExecuteReader();
         }
+
         /// <summary>
         /// Atualiza os valores do objeto de Categoria
         /// </summary>
@@ -59,6 +62,7 @@ namespace SysTINSClass
             cmd.ExecuteNonQuery();
             return cmd.ExecuteNonQuery() > 0 ? true : false;  
         }
+
         /// <summary>
         /// Deleta um objeto de Categoria
         /// </summary>
@@ -71,12 +75,13 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue ("spid", id);
             cmd.ExecuteNonQuery();
         }
+
         /// <summary>
         /// Faz uma consulta através do id da Categoria
         /// </summary>
         /// <param name="id">Id da Categoria</param>
         /// <returns></returns>
-        public static Categoria ConsultarPorID(int id)
+        public static Categoria ConsultarPorId(int id)
         {
             Categoria categoria = new();
             var cmd = Banco.Abrir();
@@ -88,6 +93,7 @@ namespace SysTINSClass
             }
             return categoria;
         } 
+
         /// <summary>
         /// Apresenta uma lista contendo todas as categorias
         /// </summary>
