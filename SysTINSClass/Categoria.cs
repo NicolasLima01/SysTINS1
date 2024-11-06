@@ -19,10 +19,10 @@ namespace SysTINSClass
         //Métodos Construtores
 
         public Categoria() { }
-        public Categoria(int id, string? nome)
+        public Categoria(string? nome, string? sigla)
         {
-            Id = id;
             Nome = nome;
+            Sigla = sigla;
         }
         public Categoria(int id, string? nome, string? sigla)
         {
@@ -41,10 +41,10 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_insert";
-            cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
-            var dr = cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
         /// <summary>
@@ -53,14 +53,19 @@ namespace SysTINSClass
         /// <returns></returns>
         public bool Atualizar() 
         {
+            bool resposta = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
-            cmd.ExecuteNonQuery();
-            return cmd.ExecuteNonQuery() > 0 ? true : false;  
+            if (cmd.ExecuteNonQuery() > 0) 
+            {
+                cmd.Connection.Close();
+                resposta = true;
+            }
+            return resposta; 
         }
 
         /// <summary>
@@ -74,6 +79,7 @@ namespace SysTINSClass
             cmd.CommandText = "sp_categoria_delete";
             cmd.Parameters.AddWithValue ("spid", id);
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
         /// <summary>
@@ -102,7 +108,7 @@ namespace SysTINSClass
         {
             List<Categoria> lista = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from categorias";
+            cmd.CommandText = "select * from categorias order by nome asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

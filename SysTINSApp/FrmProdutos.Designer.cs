@@ -55,6 +55,8 @@
             clnClasse_Desconto = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
             clnCod_Bar = new DataGridViewTextBoxColumn();
+            txtClasse_Desconto = new TextBox();
+            lblClasse_Desconto = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             txtId.Location = new Point(185, 44);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(52, 23);
+            txtId.Size = new Size(58, 23);
             txtId.TabIndex = 1;
             // 
             // btnAtualizar
@@ -87,37 +89,37 @@
             // 
             // txtCod_Bar
             // 
-            txtCod_Bar.Location = new Point(257, 44);
+            txtCod_Bar.Location = new Point(272, 44);
             txtCod_Bar.Name = "txtCod_Bar";
             txtCod_Bar.Size = new Size(337, 23);
             txtCod_Bar.TabIndex = 3;
             // 
             // txtEstoque
             // 
-            txtEstoque.Location = new Point(185, 147);
+            txtEstoque.Location = new Point(521, 94);
             txtEstoque.Name = "txtEstoque";
-            txtEstoque.Size = new Size(119, 23);
+            txtEstoque.Size = new Size(88, 23);
             txtEstoque.TabIndex = 4;
             // 
             // txtData_Cad
             // 
-            txtData_Cad.Location = new Point(478, 94);
+            txtData_Cad.Location = new Point(399, 94);
             txtData_Cad.Name = "txtData_Cad";
-            txtData_Cad.Size = new Size(116, 23);
+            txtData_Cad.Size = new Size(107, 23);
             txtData_Cad.TabIndex = 5;
             // 
             // txtUnid_Venda
             // 
-            txtUnid_Venda.Location = new Point(329, 94);
+            txtUnid_Venda.Location = new Point(293, 94);
             txtUnid_Venda.Name = "txtUnid_Venda";
-            txtUnid_Venda.Size = new Size(116, 23);
+            txtUnid_Venda.Size = new Size(100, 23);
             txtUnid_Venda.TabIndex = 6;
             // 
             // txtVl_Unid
             // 
             txtVl_Unid.Location = new Point(185, 94);
             txtVl_Unid.Name = "txtVl_Unid";
-            txtVl_Unid.Size = new Size(119, 23);
+            txtVl_Unid.Size = new Size(96, 23);
             txtVl_Unid.TabIndex = 8;
             // 
             // btnInserir
@@ -132,7 +134,7 @@
             // lblCod_Bar
             // 
             lblCod_Bar.AutoSize = true;
-            lblCod_Bar.Location = new Point(257, 26);
+            lblCod_Bar.Location = new Point(272, 26);
             lblCod_Bar.Name = "lblCod_Bar";
             lblCod_Bar.Size = new Size(97, 15);
             lblCod_Bar.TabIndex = 12;
@@ -150,7 +152,7 @@
             // lblUnid_Venda
             // 
             lblUnid_Venda.AutoSize = true;
-            lblUnid_Venda.Location = new Point(329, 76);
+            lblUnid_Venda.Location = new Point(293, 76);
             lblUnid_Venda.Name = "lblUnid_Venda";
             lblUnid_Venda.Size = new Size(86, 15);
             lblUnid_Venda.TabIndex = 14;
@@ -160,7 +162,7 @@
             // lblEstoque_Min
             // 
             lblEstoque_Min.AutoSize = true;
-            lblEstoque_Min.Location = new Point(185, 129);
+            lblEstoque_Min.Location = new Point(521, 76);
             lblEstoque_Min.Name = "lblEstoque_Min";
             lblEstoque_Min.Size = new Size(52, 15);
             lblEstoque_Min.TabIndex = 15;
@@ -179,7 +181,7 @@
             // lblData_Cad
             // 
             lblData_Cad.AutoSize = true;
-            lblData_Cad.Location = new Point(478, 76);
+            lblData_Cad.Location = new Point(399, 76);
             lblData_Cad.Name = "lblData_Cad";
             lblData_Cad.Size = new Size(97, 15);
             lblData_Cad.TabIndex = 17;
@@ -187,11 +189,12 @@
             // 
             // rtxtDescricao
             // 
-            rtxtDescricao.Location = new Point(329, 147);
+            rtxtDescricao.Location = new Point(325, 147);
             rtxtDescricao.Name = "rtxtDescricao";
-            rtxtDescricao.Size = new Size(265, 80);
+            rtxtDescricao.Size = new Size(284, 80);
             rtxtDescricao.TabIndex = 18;
             rtxtDescricao.Text = "";
+            rtxtDescricao.TextChanged += rtxtDescricao_TextChanged;
             // 
             // label1
             // 
@@ -220,6 +223,7 @@
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.Size = new Size(722, 130);
             dgvProdutos.TabIndex = 21;
+            dgvProdutos.CellContentClick += dgvProdutos_CellContentClick;
             // 
             // clnId
             // 
@@ -276,11 +280,29 @@
             clnCod_Bar.Name = "clnCod_Bar";
             clnCod_Bar.Width = 220;
             // 
+            // txtClasse_Desconto
+            // 
+            txtClasse_Desconto.Location = new Point(185, 147);
+            txtClasse_Desconto.Name = "txtClasse_Desconto";
+            txtClasse_Desconto.Size = new Size(121, 23);
+            txtClasse_Desconto.TabIndex = 22;
+            // 
+            // lblClasse_Desconto
+            // 
+            lblClasse_Desconto.AutoSize = true;
+            lblClasse_Desconto.Location = new Point(185, 129);
+            lblClasse_Desconto.Name = "lblClasse_Desconto";
+            lblClasse_Desconto.Size = new Size(93, 15);
+            lblClasse_Desconto.TabIndex = 23;
+            lblClasse_Desconto.Text = "Classe Desconto";
+            // 
             // FrmProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblClasse_Desconto);
+            Controls.Add(txtClasse_Desconto);
             Controls.Add(dgvProdutos);
             Controls.Add(cmbCategoria);
             Controls.Add(label1);
@@ -337,5 +359,7 @@
         private DataGridViewTextBoxColumn clnClasse_Desconto;
         private DataGridViewTextBoxColumn clnCategoria;
         private DataGridViewTextBoxColumn clnCod_Bar;
+        private TextBox txtClasse_Desconto;
+        private Label lblClasse_Desconto;
     }
 }

@@ -49,12 +49,16 @@ namespace SysTINSApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            Produto produto = new(Convert.ToInt32(txtCod_Bar.Text), rtxtDescricao.Text, 
-                Convert.ToInt32(txtVl_Unid.Text),Convert.ToInt32(txtUnid_Venda.Text),
-                Convert.ToDateTime(txtData_Cad.Text), Convert.ToDouble(txtEstoque.Text),
-                Convert.ToDouble(txtClasse_Desconto.Text),
-                Categoria.ConsultarPorId(Convert.ToInt32(cmbCategoria.SelectedValue))
-                );
+            Produto produto = new(Convert.ToInt32(txtCod_Bar.Text),
+                                    rtxtDescricao.Text,
+                                    Convert.ToInt32(txtVl_Unid.Text),
+                                    Convert.ToInt32(txtUnid_Venda.Text),
+                                    Convert.ToDateTime(txtData_Cad.Text),
+                                    Convert.ToDouble(txtEstoque.Text),
+                                    Convert.ToDouble(txtClasse_Desconto.Text),
+                                    Categoria.ConsultarPorId(Convert.ToInt32(cmbCategoria.SelectedValue))
+                                    );
+
             produto.Inserir();
             if (produto.Id > 0)
             {
@@ -67,18 +71,42 @@ namespace SysTINSApp
         {
             //carregando o datagrid de Produtos
             dgvProdutos.Rows.Clear();
-            var listaDeUsuarios = Produto.ObterLista();
+            var listaDeProdutos = Produto.ObterLista();
             int linha = 0;
-            foreach (var usuario in listaDeUsuarios)
+            foreach (var produto in listaDeProdutos)
             {
                 dgvProdutos.Rows.Add();
                 dgvProdutos.Rows[linha].Cells[0].Value = produto.Id;
-                dgvProdutos.Rows[linha].Cells[1].Value = produto.Nome;
-                dgvProdutos.Rows[linha].Cells[2].Value = produto.Email;
-                dgvProdutos.Rows[linha].Cells[3].Value = produto.Nivel.Nome;
-                dgvProdutos.Rows[linha].Cells[4].Value = produto.Ativo;
+                dgvProdutos.Rows[linha].Cells[3].Value = produto.Valor_unidade;
+                dgvProdutos.Rows[linha].Cells[4].Value = produto.Unidade_venda;
+                dgvProdutos.Rows[linha].Cells[8].Value = produto.Data_cadastro;
+                dgvProdutos.Rows[linha].Cells[6].Value = produto.Estoque_minimo;
+                dgvProdutos.Rows[linha].Cells[7].Value = produto.Classe_desconto;
+                dgvProdutos.Rows[linha].Cells[5].Value = produto.Categoria;
+                dgvProdutos.Rows[linha].Cells[1].Value = produto.Cod_barras;
                 linha++;
             }
+        }
+
+        private void rtxtDescricao_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int linhaAtual = dgvProdutos.CurrentRow.Index;
+            int idProduto = Convert.ToInt32(dgvProdutos.Rows[linhaAtual].Cells[0].Value);
+            var produto = Produto.ConsultarPorID(idProduto);
+            txtId.Text = produto.Id.ToString();
+            txtCod_Bar.Text = produto.Cod_barras.ToString();
+            txtVl_Unid.Text = produto.Valor_unidade.ToString();
+            txtUnid_Venda = produto.Unidade_venda.ToString();
+            txtData_Cad.Text = produto.Data_cadastro.ToString();
+            txtClasse_Desconto = produto.Classe_desconto.ToString();
+            txtEstoque = produto.Estoque_minimo.ToString();
+            cmbCategoria.SelectedValue = produto.Categoria.Id;
+            btnAtualizar.Enabled = true;
         }
     }
 }
