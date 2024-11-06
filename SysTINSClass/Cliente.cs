@@ -76,7 +76,7 @@ namespace SysTINSClass
             cmd.Connection.Close();
         }
         /// <summary>
-        /// Atualiza as infrormações do cliente
+        /// Atualiza as informações do cliente
         /// </summary>
         /// <returns></returns>
         public bool Atualizar()
@@ -100,9 +100,10 @@ namespace SysTINSClass
         public void Archivar()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
-             cmd.Parameters.AddWithValue("spid", Id);
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update clientes set ativo = 0 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         /// <summary>
         /// Faz uma consulta ao cliente através do id

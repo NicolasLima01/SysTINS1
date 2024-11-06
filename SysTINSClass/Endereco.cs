@@ -53,7 +53,7 @@ namespace SysTINSClass
 
         //Métodos
         /// <summary>
-        /// Insere um novo cliente
+        /// Insere um novo endereco
         /// </summary>
         public void Inserir()
         {
@@ -73,7 +73,7 @@ namespace SysTINSClass
             cmd.Connection.Close();
         }
         /// <summary>
-        /// Atualiza as infrormações do cliente
+        /// Atualiza as informações do endereco
         /// </summary>
         /// <returns></returns>
         public bool Atualizar()
@@ -82,7 +82,15 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_endereco_update";
-            cmd.Parameters.AddWithValue("spid", Id);            
+            cmd.Parameters.AddWithValue("spcliente_id", Cliente);
+            cmd.Parameters.AddWithValue("spcep", CEP);
+            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+            cmd.Parameters.AddWithValue("spnumero", Numero);
+            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+            cmd.Parameters.AddWithValue("spbairro", Bairro);
+            cmd.Parameters.AddWithValue("spcidade", Cidade);
+            cmd.Parameters.AddWithValue("spuf", UF);
+            cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_endereco);
             if (cmd.ExecuteNonQuery() > 0)
             {
                 cmd.Connection.Close();
@@ -91,7 +99,7 @@ namespace SysTINSClass
             return resposta;
         }
         /// <summary>
-        /// Faz uma consulta ao cliente através do id
+        /// Faz uma consulta ao endereco através do id
         /// </summary>
         /// <param name="id">Id do cliente</param>
         /// <returns></returns>
@@ -109,7 +117,7 @@ namespace SysTINSClass
             return cliente;
         }
         /// <summary>
-        /// Obtem uma lista contendo todos os clientes
+        /// Obtem uma lista contendo todos os enderecos do cliente
         /// </summary>
         /// <returns></returns>
         public static List<Cliente> ObterListaPorClienteID
