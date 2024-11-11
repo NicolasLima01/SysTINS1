@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace SysTINSClass
 {
     public class Endereco
-    {     
+    {
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
         public string? CEP { get; set; }
@@ -53,7 +53,7 @@ namespace SysTINSClass
 
         //Métodos
         /// <summary>
-        /// Insere um novo endereco
+        /// Insere um novo endereco no banco de dados
         /// </summary>
         public void Inserir()
         {
@@ -73,7 +73,7 @@ namespace SysTINSClass
             cmd.Connection.Close();
         }
         /// <summary>
-        /// Atualiza as informações do endereco
+        /// Atualiza as informações do endereco no banco de dados
         /// </summary>
         /// <returns></returns>
         public bool Atualizar()
@@ -82,6 +82,7 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_endereco_update";
+            cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente);
             cmd.Parameters.AddWithValue("spcep", CEP);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
@@ -99,39 +100,35 @@ namespace SysTINSClass
             return resposta;
         }
         /// <summary>
-        /// Faz uma consulta ao endereco através do id
+        /// Exclui um endereço do banco de dados
         /// </summary>
-        /// <param name="id">Id do cliente</param>
-        /// <returns></returns>
-        public static Cliente ConsultarPorId(int id)
+        /// <param name="id">Id do cliente a ser deletado</param>
+        public void Excluir(int id)
         {
-            Cliente cliente = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from clientes where id = {id}";
-            var dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                cliente = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4),
-                            dr.GetDateTime(5), dr.GetDateTime(6), dr.GetBoolean(7));
-            }
-            return cliente;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_delete";
+            cmd.Parameters.AddWithValue("spid", id);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         /// <summary>
         /// Obtem uma lista contendo todos os enderecos do cliente
         /// </summary>
         /// <returns></returns>
-        public static List<Cliente> ObterListaPorClienteID
-            ()
+        public static List<Endereco> ListarPorClienteID(int ClienteId)
         {
-            List<Cliente> clientes = new();
+            List<Endereco>enderecos = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from clientes orber by asc";
+            cmd.CommandText = $"select * from enderecos where cliente_id = {ClienteId}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                clientes.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4),
-                            dr.GetDateTime(5), dr.GetDateTime(6), dr.GetBoolean(7)));
+                enderecos.Add(new(dr.GetInt32(0), Cliente.ConsultarPorId(dr.GetInt32(1)), dr.GetString(2), dr.GetString(3), dr.GetString(4),
+                        dr.GetString(5),dr.GetString(6), dr.GetString(7), dr.GetString(8), dr.GetString(9)));
             }
-            return clientes;
+            return enderecos;
+           
         }
+    }
 }

@@ -93,5 +93,10 @@ namespace SysTINSApp
                 MessageBox.Show("Usuario atualizado com sucesso");
             }
         }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

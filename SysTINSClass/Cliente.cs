@@ -97,24 +97,25 @@ namespace SysTINSClass
             }
             return resposta;
         }
-        public void Archivar()
+        public void Arquivar(int Id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update clientes set ativo = 0 where id = {id}";
+            cmd.CommandText = $"update clientes set ativo = 0 where id = {Id}";
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+
         /// <summary>
         /// Faz uma consulta ao cliente através do id
         /// </summary>
         /// <param name="id">Id do cliente</param>
         /// <returns></returns>
-        public static Cliente ConsultarPorId(int id)
+        public static Cliente ConsultarPorId(int Id)
         {
             Cliente cliente = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from clientes where id = {id}";
+            cmd.CommandText = $"select * from clientes where id = {Id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {

@@ -1,5 +1,4 @@
-﻿using Mysqlx.Prepare;
-using Org.BouncyCastle.Ocsp;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +27,7 @@ namespace SysTINSClass
         
         //construtor com todos nulos, não nulos e sem id
         public Produto(string? cod_barras, string? descricao, double? valor_unidade,
-                        string? unidade_venda, Categoria categoria, double? estoque_minimo, double? classe_desconto, DateTime data_cadastro)
+                        string? unidade_venda, Categoria categoria, double? estoque_minimo, double? classe_desconto)
         {
             Cod_barras = cod_barras;
             Descricao = descricao;
@@ -38,10 +37,22 @@ namespace SysTINSClass
             Estoque_minimo = estoque_minimo;
             Classe_desconto = classe_desconto;        
         }
+        //construtor para atualizar no form de produtos
+        public Produto(int id, string? cod_barras, string? descricao, double? valor_unidade, string? unidade_venda,
+                        Categoria categoria, double? estoque_minimo, double? classe_desconto)
+        {
+            Id = id;
+            Cod_barras = cod_barras;
+            Descricao = descricao;
+            Valor_unidade = valor_unidade;
+            Unidade_venda = unidade_venda;
+            Categoria = categoria;
+            Estoque_minimo = estoque_minimo;
+            Classe_desconto = classe_desconto;
+        }
         //construtor com todos nulos, não nulos e id
-        public Produto(int id, string?
-            cod_barras, string? descricao, double? valor_unidade,
-                        string? unidade_venda, Categoria categoria, double? estoque_minimo, double? classe_desconto, DateTime data_cadastro)
+        public Produto(int id, string?cod_barras, string? descricao, double? valor_unidade, string? unidade_venda, 
+                        Categoria categoria, double? estoque_minimo, double? classe_desconto, DateTime data_cadastro)
         {
             Id = id;
             Cod_barras = cod_barras;
@@ -64,9 +75,9 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
-            cmd.Parameters.AddWithValue("sp_cod_barras", Cod_barras);
+            cmd.Parameters.AddWithValue("spcod_barras", Cod_barras);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spvalor_unidade", Valor_unidade);
+            cmd.Parameters.AddWithValue("spvalor_unit", Valor_unidade);
             cmd.Parameters.AddWithValue("spunidade_venda", Unidade_venda);
             cmd.Parameters.AddWithValue("spcategoria_id", Categoria.Id);
             cmd.Parameters.AddWithValue("spestoque_minimo", Estoque_minimo);
@@ -131,7 +142,7 @@ namespace SysTINSClass
             List<Produto> lista = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"select * from produtos";
+            cmd.CommandText = $"select * from produtos order by descricao asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read()) 
             {

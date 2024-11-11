@@ -19,6 +19,11 @@ namespace SysTINSClass
         //Métodos Construtores
 
         public Categoria() { }
+        public Categoria(int id, string? nome)
+        {
+            Id = id;
+            Nome = nome;
+        }
         public Categoria(string? nome, string? sigla)
         {
             Nome = nome;
@@ -95,7 +100,7 @@ namespace SysTINSClass
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                categoria = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                categoria = new(dr.GetInt32(0), dr.GetString(1));
             }
             return categoria;
         } 
@@ -112,7 +117,7 @@ namespace SysTINSClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                lista.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
+                lista.Add(new(dr.GetInt32(0), dr.GetString(1)));
             }
             return lista;
         }

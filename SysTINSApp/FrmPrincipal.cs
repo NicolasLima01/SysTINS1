@@ -38,5 +38,19 @@ namespace SysTINSApp
             frmUsuarios.MdiParent = this; //associa esta instancia ao container (MDI) FrmPrincipal
             frmUsuarios.Show(); //Exibe o form Usuarios na janela do sistema
         }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProdutos frmProdutos = new();
+            frmProdutos.MdiParent = this;
+            frmProdutos.Show(); 
+        }
+
+        private void manterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProdutoWell frmprodutos = new();
+            frmprodutos.MdiParent = this;
+            frmprodutos.Show();
+        }
     }
 }
