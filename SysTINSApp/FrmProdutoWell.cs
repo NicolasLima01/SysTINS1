@@ -150,5 +150,12 @@ namespace SysTINSApp
         {
 
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            var produto = Produto.ObterLista();
+            dgvProdutos.Rows.Clear();
+
+        }
     }
 }

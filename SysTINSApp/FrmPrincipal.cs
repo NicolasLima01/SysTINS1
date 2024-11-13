@@ -43,14 +43,21 @@ namespace SysTINSApp
         {
             FrmProdutos frmProdutos = new();
             frmProdutos.MdiParent = this;
-            frmProdutos.Show(); 
+            frmProdutos.Show();
         }
 
         private void manterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProdutoWell frmprodutos = new();
-            frmprodutos.MdiParent = this;
-            frmprodutos.Show();
+            FrmProdutoWell frmProdutos = new();
+            frmProdutos.MdiParent = this;
+            frmProdutos.Show();
+        }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNovoCliente frmNovoCliente = new();
+            frmNovoCliente.MdiParent = this;
+            frmNovoCliente.Show();
         }
     }
 }

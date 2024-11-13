@@ -41,7 +41,7 @@
             gpProdutos = new GroupBox();
             cmbCategoria = new ComboBox();
             npEstoqueMinimo = new NumericUpDown();
-            btnCosultar = new Button();
+            btnConsultar = new Button();
             btnAdicionar = new Button();
             btnEditar = new Button();
             label7 = new Label();
@@ -77,6 +77,8 @@
             // 
             dgvProdutos.AllowUserToAddRows = false;
             dgvProdutos.AllowUserToDeleteRows = false;
+            dgvProdutos.AllowUserToResizeColumns = false;
+            dgvProdutos.AllowUserToResizeRows = false;
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnId, clnCodigoBarras, clnDescricao, clnValorUnit, clnUnidadeVenda, clnCategoria, clnEstoqueMinimo, clnDesconto, clnData });
             dgvProdutos.Location = new Point(12, 352);
@@ -153,7 +155,7 @@
             // 
             gpProdutos.Controls.Add(cmbCategoria);
             gpProdutos.Controls.Add(npEstoqueMinimo);
-            gpProdutos.Controls.Add(btnCosultar);
+            gpProdutos.Controls.Add(btnConsultar);
             gpProdutos.Controls.Add(btnAdicionar);
             gpProdutos.Controls.Add(btnEditar);
             gpProdutos.Controls.Add(label7);
@@ -193,14 +195,15 @@
             npEstoqueMinimo.Size = new Size(58, 23);
             npEstoqueMinimo.TabIndex = 4;
             // 
-            // btnCosultar
+            // btnConsultar
             // 
-            btnCosultar.Location = new Point(365, 213);
-            btnCosultar.Name = "btnCosultar";
-            btnCosultar.Size = new Size(75, 23);
-            btnCosultar.TabIndex = 8;
-            btnCosultar.Text = "&Consultar";
-            btnCosultar.UseVisualStyleBackColor = true;
+            btnConsultar.Location = new Point(365, 213);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.TabIndex = 8;
+            btnConsultar.Text = "&Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnAdicionar
             // 
@@ -467,7 +470,7 @@
         private GroupBox gpProdutos;
         private ComboBox cmbCategoria;
         private NumericUpDown npEstoqueMinimo;
-        private Button btnCosultar;
+        private Button btnConsultar;
         private Button btnAdicionar;
         private Button btnEditar;
         private Label label7;

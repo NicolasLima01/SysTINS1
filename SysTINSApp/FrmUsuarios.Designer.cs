@@ -71,6 +71,7 @@
             btnConsultar.TabIndex = 1;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnAtualizar
             // 
@@ -93,6 +94,7 @@
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnid, clnNome, clnEmail, clnNivel, clnAtivo });
             dgvUsuarios.Location = new Point(121, 261);
             dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(500, 150);

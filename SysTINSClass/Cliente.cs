@@ -127,12 +127,13 @@ namespace SysTINSClass
         /// <summary>
         /// Obtem uma lista contendo todos os clientes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Uma lista de clientes</returns>
         public static List<Cliente> ObterLista()
         {
             List<Cliente> clientes = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from clientes orber by asc";
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from clientes order by nome asc";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {

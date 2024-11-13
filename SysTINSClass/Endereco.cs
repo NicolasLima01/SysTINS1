@@ -112,11 +112,28 @@ namespace SysTINSClass
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+        public static Endereco ConsultarPorId(int Id)
+        {
+            Endereco endereco = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from enderecos where id = {Id}";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                endereco = new(dr.GetInt32(0),
+                        Cliente.ConsultarPorId(dr.GetInt32(1)),
+                        dr.GetString(2), dr.GetString(3),
+                        dr.GetString(4), dr.GetString(5),
+                        dr.GetString(6), dr.GetString(7),
+                        dr.GetString(8), dr.GetString(9));
+            }
+            return endereco;
+        }
         /// <summary>
         /// Obtem uma lista contendo todos os enderecos do cliente
         /// </summary>
         /// <returns></returns>
-        public static List<Endereco> ListarPorClienteID(int ClienteId)
+        public static List<Endereco> ListarPorClienteId(int ClienteId)
         {
             List<Endereco>enderecos = new();
             var cmd = Banco.Abrir();
@@ -124,8 +141,12 @@ namespace SysTINSClass
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                enderecos.Add(new(dr.GetInt32(0), Cliente.ConsultarPorId(dr.GetInt32(1)), dr.GetString(2), dr.GetString(3), dr.GetString(4),
-                        dr.GetString(5),dr.GetString(6), dr.GetString(7), dr.GetString(8), dr.GetString(9)));
+                enderecos.Add(new(dr.GetInt32(0), 
+                        Cliente.ConsultarPorId(dr.GetInt32(1)), 
+                        dr.GetString(2), dr.GetString(3), 
+                        dr.GetString(4),dr.GetString(5),
+                        dr.GetString(6), dr.GetString(7), 
+                        dr.GetString(8), dr.GetString(9)));
             }
             return enderecos;
            
