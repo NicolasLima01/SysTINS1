@@ -51,12 +51,13 @@
             clnData_cad = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewTextBoxColumn();
             dtpData_Nasc = new DateTimePicker();
+            chkAtivo = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // txtId
             // 
-            txtId.Location = new Point(220, 121);
+            txtId.Location = new Point(223, 72);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(63, 23);
@@ -64,36 +65,36 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(301, 121);
+            txtNome.Location = new Point(304, 72);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(140, 23);
+            txtNome.Size = new Size(276, 23);
             txtNome.TabIndex = 1;
             // 
             // txtCpf
             // 
-            txtCpf.Location = new Point(463, 121);
+            txtCpf.Location = new Point(343, 183);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(114, 23);
             txtCpf.TabIndex = 2;
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(220, 181);
+            txtTelefone.Location = new Point(223, 183);
             txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(100, 23);
+            txtTelefone.Size = new Size(114, 23);
             txtTelefone.TabIndex = 3;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(341, 181);
+            txtEmail.Location = new Point(223, 128);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(100, 23);
+            txtEmail.Size = new Size(271, 23);
             txtEmail.TabIndex = 4;
             // 
             // lblId
             // 
             lblId.AutoSize = true;
-            lblId.Location = new Point(220, 103);
+            lblId.Location = new Point(223, 54);
             lblId.Name = "lblId";
             lblId.Size = new Size(18, 15);
             lblId.TabIndex = 8;
@@ -102,7 +103,7 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(301, 103);
+            lblNome.Location = new Point(304, 54);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(40, 15);
             lblNome.TabIndex = 9;
@@ -111,7 +112,7 @@
             // lblCpf
             // 
             lblCpf.AutoSize = true;
-            lblCpf.Location = new Point(463, 103);
+            lblCpf.Location = new Point(343, 165);
             lblCpf.Name = "lblCpf";
             lblCpf.Size = new Size(28, 15);
             lblCpf.TabIndex = 10;
@@ -120,7 +121,7 @@
             // lblTelefone
             // 
             lblTelefone.AutoSize = true;
-            lblTelefone.Location = new Point(220, 163);
+            lblTelefone.Location = new Point(223, 165);
             lblTelefone.Name = "lblTelefone";
             lblTelefone.Size = new Size(51, 15);
             lblTelefone.TabIndex = 11;
@@ -129,7 +130,7 @@
             // LblEmail
             // 
             LblEmail.AutoSize = true;
-            LblEmail.Location = new Point(341, 163);
+            LblEmail.Location = new Point(223, 110);
             LblEmail.Name = "LblEmail";
             LblEmail.Size = new Size(36, 15);
             LblEmail.TabIndex = 12;
@@ -138,7 +139,7 @@
             // lblData_nasc
             // 
             lblData_nasc.AutoSize = true;
-            lblData_nasc.Location = new Point(463, 163);
+            lblData_nasc.Location = new Point(466, 165);
             lblData_nasc.Name = "lblData_nasc";
             lblData_nasc.Size = new Size(114, 15);
             lblData_nasc.TabIndex = 13;
@@ -146,7 +147,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(301, 227);
+            btnInserir.Location = new Point(304, 244);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(75, 23);
             btnInserir.TabIndex = 14;
@@ -156,7 +157,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(416, 227);
+            btnCancelar.Location = new Point(419, 244);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 15;
@@ -235,18 +236,33 @@
             // dtpData_Nasc
             // 
             dtpData_Nasc.Format = DateTimePickerFormat.Short;
-            dtpData_Nasc.Location = new Point(463, 181);
+            dtpData_Nasc.Location = new Point(466, 183);
             dtpData_Nasc.MaxDate = new DateTime(2006, 11, 13, 0, 0, 0, 0);
             dtpData_Nasc.Name = "dtpData_Nasc";
             dtpData_Nasc.Size = new Size(114, 23);
             dtpData_Nasc.TabIndex = 17;
             dtpData_Nasc.Value = new DateTime(2005, 12, 31, 0, 0, 0, 0);
             // 
+            // chkAtivo
+            // 
+            chkAtivo.AutoSize = true;
+            chkAtivo.Checked = true;
+            chkAtivo.CheckState = CheckState.Checked;
+            chkAtivo.Enabled = false;
+            chkAtivo.Location = new Point(526, 128);
+            chkAtivo.Name = "chkAtivo";
+            chkAtivo.Size = new Size(54, 19);
+            chkAtivo.TabIndex = 18;
+            chkAtivo.Text = "Ativo";
+            chkAtivo.UseVisualStyleBackColor = true;
+            chkAtivo.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // FrmNovoCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(chkAtivo);
             Controls.Add(dtpData_Nasc);
             Controls.Add(dgvClientes);
             Controls.Add(btnCancelar);
@@ -297,5 +313,6 @@
         private DataGridViewTextBoxColumn clnAtivo;
         private DateTimePicker dtpData_Nasc;
         private Label label1;
+        private CheckBox chkAtivo;
     }
 }

@@ -11,19 +11,19 @@ namespace SysTINSClass
     public class Cliente
     {
         public int Id { get; set; }
-        public string? Nome { get; set; }
-        public string? CPF { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
         public string? Telefone { get; set; }
         public string? Email { get; set; }
         public DateTime? Data_nasc {  get; set; }
-        public DateTime? Data_cad {  get; set; }
-        public bool? Ativo {  get; set; }
+        public DateTime Data_cad {  get; set; }
+        public bool Ativo {  get; set; }
         //Um dos atributos terá como atributo uma lista de endereços
         public List<Endereco> Enderecos { get; set; }
 
         public Cliente() { Enderecos = new(); }
         
-        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad, bool? ativo, List<Endereco> enderecos)
+        public Cliente(string nome, string cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad, bool ativo, List<Endereco> enderecos)
         {
             Nome = nome;
             CPF = cpf;
@@ -33,7 +33,7 @@ namespace SysTINSClass
             Ativo = ativo;
             Enderecos = enderecos;
         }
-        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad, bool? ativo)
+        public Cliente(int id, string nome, string cpf, string? telefone, string? email, DateTime? data_nasc, DateTime data_cad, bool ativo)
         {
             Id = id;
             Nome = nome;
@@ -44,7 +44,7 @@ namespace SysTINSClass
             Data_cad = data_cad;
             Ativo = ativo;
         }
-        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad, bool? ativo, List<Endereco> enderecos)
+        public Cliente(int id, string nome, string cpf, string? telefone, string? email, DateTime? data_nasc, DateTime data_cad, bool ativo, List<Endereco> enderecos)
         {
             Id = id;
             Nome = nome;
