@@ -19,7 +19,7 @@ namespace SysTINSApp
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
-        {/*
+        {
             Hide();
             FrmLogin frmLogin = new();
             if (frmLogin.ShowDialog() == DialogResult.OK)
@@ -29,7 +29,7 @@ namespace SysTINSApp
             }
             else
                 Application.Exit();
-            Show();*/
+            Show();
         }
 
         private void novoToolStripMenuItem2_Click_1(object sender, EventArgs e)
@@ -62,8 +62,14 @@ namespace SysTINSApp
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void novoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
             FrmPedidoNovo frmPedidoNovo = new();
             frmPedidoNovo.MdiParent = this;
+            frmPedidoNovo.txtUsuario.Text = Program.UsuarioLogado.Id + "-" + Program.UsuarioLogado.Nome;
             frmPedidoNovo.Show();
         }
     }

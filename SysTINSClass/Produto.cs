@@ -24,6 +24,12 @@ namespace SysTINSClass
         //Construtores
 
         public Produto() { Categoria = new(); }
+        public Produto(string? cod_barras, string? descricao) // Usado para FrmPedidoNovo
+        {
+            Cod_barras = cod_barras;
+            Descricao = descricao;
+            Categoria = new();
+        }
         
         //construtor com todos nulos, não nulos e sem id
         public Produto(string? cod_barras, string? descricao, double? valor_unidade,

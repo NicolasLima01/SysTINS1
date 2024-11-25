@@ -8,5 +8,6 @@ namespace SysTINSClass
 {
     internal class Caixa
     {
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SysTINSClass;
 
 namespace SysTINSApp
 {
@@ -17,19 +18,34 @@ namespace SysTINSApp
             InitializeComponent();
         }
 
-        private void FrmPedidoNovo_Load(object sender, EventArgs e)
+        private void btnInserePedido_Click(object sender, EventArgs e)
         {
-
+            Pedido pedido = new(Usuario.ObterPorID(Program.UsuarioLogado.Id),
+                Cliente.ConsultarPorId(int.Parse(txtIdCliente.Text))
+                );
+            pedido.Inserir();
+            txtIdPedido.Text = pedido.Id.ToString();
+            grbIndentificacao.Enabled = false;
+            grbItens.Enabled = true;
+            btnInserePedido.Enabled = false;
         }
 
-        private void lblCodBar_Click(object sender, EventArgs e)
+        private void btnAddItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-            txtUsuario.Text = Convert.ToString(Program.UsuarioLogado);
+            Produto produto = new(txtCodBar.Text, txtDescricao.Text);
+            produto.Cod_barras = txtCodBar.Text;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select id from produtos where cod_barras = {produto.Cod_barras}";    
+            produto = Produto.ConsultarPorID(Convert.ToInt32(cmd.ExecuteScalar()));
+            cmd.Connection.Close();
+            ItemPedido itemPedido = new(Convert.ToInt32(txtIdPedido.Text),
+                                        Produto.ConsultarPorID(produto.Id),
+                                        Convert.ToDouble(txtValorUnit.Text),
+                                        Convert.ToDouble(txtQuantidade.Text),
+                                        Convert.ToDouble(txtDescontoItem.Text)
+                                        );                             
+            itemPedido.Inserir();
         }
     }
 }

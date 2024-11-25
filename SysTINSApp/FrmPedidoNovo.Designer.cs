@@ -37,11 +37,11 @@
             label3 = new Label();
             grbItens = new GroupBox();
             label4 = new Label();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            rbReal = new RadioButton();
+            rbPercentual = new RadioButton();
             textBox1 = new TextBox();
             label10 = new Label();
-            label9 = new Label();
+            lblDesconto = new Label();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -112,6 +112,7 @@
             btnInserePedido.TabIndex = 1;
             btnInserePedido.Text = "Abrir";
             btnInserePedido.UseVisualStyleBackColor = true;
+            btnInserePedido.Click += btnInserePedido_Click;
             // 
             // txtIdCliente
             // 
@@ -137,7 +138,6 @@
             txtUsuario.ReadOnly = true;
             txtUsuario.Size = new Size(372, 27);
             txtUsuario.TabIndex = 1;
-            txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // label3
             // 
@@ -151,11 +151,11 @@
             // grbItens
             // 
             grbItens.Controls.Add(label4);
-            grbItens.Controls.Add(radioButton2);
-            grbItens.Controls.Add(radioButton1);
+            grbItens.Controls.Add(rbReal);
+            grbItens.Controls.Add(rbPercentual);
             grbItens.Controls.Add(textBox1);
             grbItens.Controls.Add(label10);
-            grbItens.Controls.Add(label9);
+            grbItens.Controls.Add(lblDesconto);
             grbItens.Controls.Add(label8);
             grbItens.Controls.Add(label7);
             grbItens.Controls.Add(label6);
@@ -185,27 +185,27 @@
             label4.TabIndex = 15;
             label4.Text = "R$ ";
             // 
-            // radioButton2
+            // rbReal
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Checked = true;
-            radioButton2.Location = new Point(463, 40);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(47, 19);
-            radioButton2.TabIndex = 14;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Real";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbReal.AutoSize = true;
+            rbReal.Checked = true;
+            rbReal.Location = new Point(463, 40);
+            rbReal.Name = "rbReal";
+            rbReal.Size = new Size(47, 19);
+            rbReal.TabIndex = 14;
+            rbReal.TabStop = true;
+            rbReal.Text = "Real";
+            rbReal.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbPercentual
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(463, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(81, 19);
-            radioButton1.TabIndex = 14;
-            radioButton1.Text = "Percentual";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbPercentual.AutoSize = true;
+            rbPercentual.Location = new Point(463, 22);
+            rbPercentual.Name = "rbPercentual";
+            rbPercentual.Size = new Size(81, 19);
+            rbPercentual.TabIndex = 14;
+            rbPercentual.Text = "Percentual";
+            rbPercentual.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -228,14 +228,14 @@
             label10.TabIndex = 12;
             label10.Text = "Total R$";
             // 
-            // label9
+            // lblDesconto
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(463, 10);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 15);
-            label9.TabIndex = 11;
-            label9.Text = "Desconto";
+            lblDesconto.AutoSize = true;
+            lblDesconto.Location = new Point(463, 10);
+            lblDesconto.Name = "lblDesconto";
+            lblDesconto.Size = new Size(57, 15);
+            lblDesconto.TabIndex = 11;
+            lblDesconto.Text = "Desconto";
             // 
             // label8
             // 
@@ -320,6 +320,7 @@
             btnAddItem.TabIndex = 5;
             btnAddItem.Text = "A&dicionar";
             btnAddItem.UseVisualStyleBackColor = true;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // dgvItensPedido
             // 
@@ -527,7 +528,6 @@
             Controls.Add(btnFechar);
             Name = "FrmPedidoNovo";
             Text = "FrmPedidoNovo";
-            Load += FrmPedidoNovo_Load;
             grbIndentificacao.ResumeLayout(false);
             grbIndentificacao.PerformLayout();
             grbItens.ResumeLayout(false);
@@ -544,8 +544,7 @@
         private Label label3;
         private Label label1;
         private Label label2;
-        private TextBox txtIdPedido;
-        private TextBox txtUsuario;
+        public TextBox txtUsuario;
         private TextBox textBox3;
         private Button btnInserePedido;
         private TextBox txtIdCliente;
@@ -554,7 +553,7 @@
         private TextBox txtValorUnit;
         private TextBox txtCodBar;
         private TextBox txtDescricao;
-        private Label label9;
+        private Label lblDesconto;
         private Label label8;
         private Label label7;
         private Label label6;
@@ -579,9 +578,10 @@
         private DataGridViewTextBoxColumn clnQuantidade;
         private DataGridViewTextBoxColumn clnDescontoItem;
         private DataGridViewTextBoxColumn clnTotalItem;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton rbReal;
+        private RadioButton rbPercentual;
         private Button button1;
         private Label label4;
+        private TextBox txtIdPedido;
     }
 }
