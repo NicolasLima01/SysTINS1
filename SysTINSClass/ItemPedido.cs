@@ -33,15 +33,7 @@ namespace SysTINSClass
             ValorUnit = valorUnit;
             Quantidade = quantidade;
             Desconto = desconto;
-        }
-        public ItemPedido(int pedidoId, Produto? produto, double valorUnit, double quantidade, double desconto)
-        {
-            PedidoId = pedidoId;
-            Produto = produto;
-            ValorUnit = valorUnit;
-            Quantidade = quantidade;
-            Desconto = desconto;
-        }
+        }        
 
         //Métodos
         public void Inserir()

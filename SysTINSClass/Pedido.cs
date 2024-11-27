@@ -85,7 +85,6 @@ namespace SysTINSClass
                     dr.GetString(4),
                     dr.GetDouble(5),
                     ItemPedido.ObterItemPorPedidoId(dr.GetInt32(0))
-
                     );
             }
             return pedido;

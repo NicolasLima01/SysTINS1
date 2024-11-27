@@ -140,6 +140,26 @@ namespace SysTINSClass
         }
 
         /// <summary>
+        /// Faz a consulta de um produto através do código de barras
+        /// </summary>
+        /// <param name="codbar">código de barras do produto</param>
+        /// <returns>Objeto de Produto</returns>
+        public static Produto ConsultarPorCodBar(string codbar)
+        {
+            Produto produto = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from produtos where id = {codbar}";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                produto = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetDouble(3), dr.GetString(4),
+                        Categoria.ConsultarPorId(dr.GetInt32(5)), dr.GetDouble(6), dr.GetDouble(7), dr.GetDateTime(9));
+            }
+            return produto;
+        }
+
+        /// <summary>
         /// Obtem uma lista com todos os produtos
         /// </summary>
         /// <returns></returns>

@@ -44,7 +44,9 @@ namespace SysTINSApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-
+            /*
+             
+             */
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
