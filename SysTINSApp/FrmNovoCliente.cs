@@ -43,10 +43,18 @@ namespace SysTINSApp
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
-        {
+        {            
             /*
-             
-             */
+            Cliente cliente = new(
+                               txtNome.Text,
+                               txtCpf.Text,
+                               txtTelefone.Text,
+                               txtEmail.Text,
+                               dtpData_Nasc.Value,
+                               chkAtivo.Checked
+                               Endereco.button
+                               );               
+            */
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)

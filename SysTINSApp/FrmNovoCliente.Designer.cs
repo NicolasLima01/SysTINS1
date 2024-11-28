@@ -52,6 +52,7 @@
             clnAtivo = new DataGridViewTextBoxColumn();
             dtpData_Nasc = new DateTimePicker();
             chkAtivo = new CheckBox();
+            btnAddEndereco = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -257,11 +258,21 @@
             chkAtivo.UseVisualStyleBackColor = true;
             chkAtivo.CheckedChanged += checkBox1_CheckedChanged;
             // 
+            // btnAddEndereco
+            // 
+            btnAddEndereco.Location = new Point(615, 216);
+            btnAddEndereco.Name = "btnAddEndereco";
+            btnAddEndereco.Size = new Size(75, 51);
+            btnAddEndereco.TabIndex = 19;
+            btnAddEndereco.Text = "button1";
+            btnAddEndereco.UseVisualStyleBackColor = true;
+            // 
             // FrmNovoCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAddEndereco);
             Controls.Add(chkAtivo);
             Controls.Add(dtpData_Nasc);
             Controls.Add(dgvClientes);
@@ -314,5 +325,6 @@
         private DateTimePicker dtpData_Nasc;
         private Label label1;
         private CheckBox chkAtivo;
+        private Button btnAddEndereco;
     }
 }

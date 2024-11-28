@@ -16,7 +16,8 @@ namespace SysTINSClass
         /// <returns></returns>
         public static MySqlCommand Abrir() 
         {
-            string strcon = @"Server=10.91.45.47;database=systinsdb01;user=aluno;password=senac";
+            //string strcon = @"Server=10.91.45.47;database=systinsdb01;user=aluno;password=senac";
+            string strcon = @"Server=127.0.0.1;database=systinsdb01;user=root;password=";
             MySqlConnection cn = new(strcon);
             MySqlCommand cmd = new();
             try

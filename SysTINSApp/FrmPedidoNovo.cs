@@ -90,7 +90,7 @@ namespace SysTINSApp
                 dgvItensPedido.Rows[linha].Cells[3].Value = item.Produto.Valor_unidade;
                 dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade;
                 dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto;
-                dgvItensPedido.Rows[linha].Cells[6].Value = item.ValorUnit * item.Quantidade;
+                dgvItensPedido.Rows[linha].Cells[6].Value = item.ValorUnit * item.Quantidade - item.Desconto;
                 linha++;
             }
         }
