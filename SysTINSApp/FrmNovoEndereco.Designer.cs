@@ -47,12 +47,15 @@
             lblTipoEndereco = new Label();
             cmbUf = new ComboBox();
             cmbTipoEndereco = new ComboBox();
-            btnCancelar = new Button();
+            btnAtualizar = new Button();
+            txtId = new TextBox();
+            lblId = new Label();
+            btnExcluir = new Button();
             SuspendLayout();
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(365, 170);
+            btnAdicionar.Location = new Point(456, 94);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 40);
             btnAdicionar.TabIndex = 0;
@@ -63,7 +66,7 @@
             // lblClienteId
             // 
             lblClienteId.AutoSize = true;
-            lblClienteId.Location = new Point(29, 22);
+            lblClienteId.Location = new Point(120, 25);
             lblClienteId.Name = "lblClienteId";
             lblClienteId.Size = new Size(57, 15);
             lblClienteId.TabIndex = 1;
@@ -71,7 +74,7 @@
             // 
             // txtClienteId
             // 
-            txtClienteId.Location = new Point(29, 40);
+            txtClienteId.Location = new Point(120, 43);
             txtClienteId.Name = "txtClienteId";
             txtClienteId.ReadOnly = true;
             txtClienteId.Size = new Size(70, 23);
@@ -80,14 +83,14 @@
             // 
             // txtCep
             // 
-            txtCep.Location = new Point(120, 40);
+            txtCep.Location = new Point(211, 43);
             txtCep.Name = "txtCep";
             txtCep.Size = new Size(100, 23);
             txtCep.TabIndex = 3;
             // 
             // txtLogradouro
             // 
-            txtLogradouro.Location = new Point(240, 40);
+            txtLogradouro.Location = new Point(331, 43);
             txtLogradouro.Name = "txtLogradouro";
             txtLogradouro.Size = new Size(200, 23);
             txtLogradouro.TabIndex = 4;
@@ -117,13 +120,13 @@
             // 
             txtCidade.Location = new Point(30, 187);
             txtCidade.Name = "txtCidade";
-            txtCidade.Size = new Size(120, 23);
+            txtCidade.Size = new Size(174, 23);
             txtCidade.TabIndex = 9;
             // 
             // lblCep
             // 
             lblCep.AutoSize = true;
-            lblCep.Location = new Point(120, 23);
+            lblCep.Location = new Point(211, 26);
             lblCep.Name = "lblCep";
             lblCep.Size = new Size(28, 15);
             lblCep.TabIndex = 11;
@@ -132,7 +135,7 @@
             // lblLogradouro
             // 
             lblLogradouro.AutoSize = true;
-            lblLogradouro.Location = new Point(240, 23);
+            lblLogradouro.Location = new Point(331, 26);
             lblLogradouro.Name = "lblLogradouro";
             lblLogradouro.Size = new Size(69, 15);
             lblLogradouro.TabIndex = 12;
@@ -177,7 +180,7 @@
             // lblUf
             // 
             lblUf.AutoSize = true;
-            lblUf.Location = new Point(175, 170);
+            lblUf.Location = new Point(225, 170);
             lblUf.Name = "lblUf";
             lblUf.Size = new Size(21, 15);
             lblUf.TabIndex = 17;
@@ -186,7 +189,7 @@
             // lblTipoEndereco
             // 
             lblTipoEndereco.AutoSize = true;
-            lblTipoEndereco.Location = new Point(240, 169);
+            lblTipoEndereco.Location = new Point(290, 169);
             lblTipoEndereco.Name = "lblTipoEndereco";
             lblTipoEndereco.Size = new Size(30, 15);
             lblTipoEndereco.TabIndex = 18;
@@ -196,7 +199,7 @@
             // 
             cmbUf.FormattingEnabled = true;
             cmbUf.Items.AddRange(new object[] { "SP", "MG", "RJ", "ES", "SC", "RS", "PR", "DF", "GO", "MS", "MT", "BA", "AL", "SE", "PR", "PB", "RN", "CE", "PI", "MA", "PA", "AM", "RR", "RO", "AP", "AC", "TO" });
-            cmbUf.Location = new Point(175, 188);
+            cmbUf.Location = new Point(225, 188);
             cmbUf.Name = "cmbUf";
             cmbUf.Size = new Size(45, 23);
             cmbUf.TabIndex = 19;
@@ -205,27 +208,57 @@
             // 
             cmbTipoEndereco.FormattingEnabled = true;
             cmbTipoEndereco.Items.AddRange(new object[] { "RES", "COM" });
-            cmbTipoEndereco.Location = new Point(240, 187);
+            cmbTipoEndereco.Location = new Point(290, 187);
             cmbTipoEndereco.Name = "cmbTipoEndereco";
             cmbTipoEndereco.Size = new Size(100, 23);
             cmbTipoEndereco.TabIndex = 20;
             // 
-            // btnCancelar
+            // btnAtualizar
             // 
-            btnCancelar.Location = new Point(468, 169);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 41);
-            btnCancelar.TabIndex = 21;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            btnAtualizar.Location = new Point(456, 140);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 41);
+            btnAtualizar.TabIndex = 21;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click_1;
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(29, 43);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(70, 23);
+            txtId.TabIndex = 22;
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Location = new Point(29, 25);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(17, 15);
+            lblId.TabIndex = 23;
+            lblId.Text = "Id";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(456, 187);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 41);
+            btnExcluir.TabIndex = 24;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // FrmNovoEndereco
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(586, 247);
-            Controls.Add(btnCancelar);
+            Controls.Add(btnExcluir);
+            Controls.Add(lblId);
+            Controls.Add(txtId);
+            Controls.Add(btnAtualizar);
             Controls.Add(cmbTipoEndereco);
             Controls.Add(cmbUf);
             Controls.Add(lblTipoEndereco);
@@ -272,6 +305,9 @@
         private Label lblTipoEndereco;
         private ComboBox cmbUf;
         private ComboBox cmbTipoEndereco;
-        private Button btnCancelar;
+        private Button btnAtualizar;
+        private TextBox txtId;
+        private Label lblId;
+        private Button btnExcluir;
     }
 }

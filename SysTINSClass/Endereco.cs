@@ -36,6 +36,19 @@ namespace SysTINSClass
             UF = uf;
             Tipo_endereco = tipo_endereco;
         }
+        public Endereco(int id, string? cep, string? logradouro, string? numero, string? complemento,
+                         string? bairro, string? cidade, string? uf, string? tipo_endereco)
+        {
+            Id = id;
+            CEP = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
+            Tipo_endereco = tipo_endereco;
+        }
         public Endereco(int id, Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento,
                          string? bairro, string? cidade, string? uf, string? tipo_endereco)
         {
