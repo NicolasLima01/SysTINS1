@@ -32,7 +32,7 @@ namespace SysTINSApp
                                Convert.ToString(cmbTipoEndereco.SelectedItem)
                                );
             endereco.Inserir();
-            if (endereco.Id > 0)
+            if (endereco.Cliente.Id > 0)
             {
                 MessageBox.Show($"Endereço adicionado com sucesso");
                 btnAdicionar.Enabled = false;
