@@ -60,7 +60,7 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_endereco_insert";
-            cmd.Parameters.AddWithValue("spcliente_id", Cliente);
+            cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
             cmd.Parameters.AddWithValue("spcep", CEP);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
             cmd.Parameters.AddWithValue("spnumero", Numero);
@@ -102,7 +102,7 @@ namespace SysTINSClass
         /// <summary>
         /// Exclui um endereço do banco de dados
         /// </summary>
-        /// <param name="id">Id do cliente a ser deletado</param>
+        /// <param name="id">Id do cliente</param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();

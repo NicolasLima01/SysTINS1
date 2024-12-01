@@ -53,7 +53,9 @@
             dtpData_Nasc = new DateTimePicker();
             chkAtivo = new CheckBox();
             btnAddEndereco = new Button();
+            grbAddEndereco = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            grbAddEndereco.SuspendLayout();
             SuspendLayout();
             // 
             // txtId
@@ -260,19 +262,30 @@
             // 
             // btnAddEndereco
             // 
-            btnAddEndereco.Location = new Point(615, 216);
+            btnAddEndereco.Location = new Point(42, 30);
             btnAddEndereco.Name = "btnAddEndereco";
             btnAddEndereco.Size = new Size(75, 51);
             btnAddEndereco.TabIndex = 19;
-            btnAddEndereco.Text = "button1";
+            btnAddEndereco.Text = "Adicionar";
             btnAddEndereco.UseVisualStyleBackColor = true;
+            btnAddEndereco.Click += btnAddEndereco_Click;
+            // 
+            // grbAddEndereco
+            // 
+            grbAddEndereco.Controls.Add(btnAddEndereco);
+            grbAddEndereco.Location = new Point(618, 80);
+            grbAddEndereco.Name = "grbAddEndereco";
+            grbAddEndereco.Size = new Size(159, 100);
+            grbAddEndereco.TabIndex = 20;
+            grbAddEndereco.TabStop = false;
+            grbAddEndereco.Text = "Adicionar Endereço";
             // 
             // FrmNovoCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnAddEndereco);
+            Controls.Add(grbAddEndereco);
             Controls.Add(chkAtivo);
             Controls.Add(dtpData_Nasc);
             Controls.Add(dgvClientes);
@@ -293,6 +306,7 @@
             Text = "FrmNovoCliente";
             Load += FrmNovoCliente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            grbAddEndereco.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,5 +340,6 @@
         private Label label1;
         private CheckBox chkAtivo;
         private Button btnAddEndereco;
+        private GroupBox grbAddEndereco;
     }
 }

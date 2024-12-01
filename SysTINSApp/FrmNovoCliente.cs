@@ -20,12 +20,20 @@ namespace SysTINSApp
 
         private void FrmNovoCliente_Load(object sender, EventArgs e)
         {
-            CarregaGrid();
+            CarregaGridClientes();
+            if (txtId.Text != "")
+            {
+                var cliente = Cliente.ConsultarPorId(Convert.ToInt32(txtId.Text));
+                if (cliente.Id == Convert.ToInt32(txtId.Text))
+                {
+                    grbAddEndereco.Enabled = true;
+                }
+            }
         }
-        private void CarregaGrid()
+        private void CarregaGridClientes()
         {
-            var listaClientes = Cliente.ObterLista();
             dgvClientes.Rows.Clear();
+            var listaClientes = Cliente.ObterLista();
             int linha = 0;
             foreach (var cliente in listaClientes)
             {
@@ -43,18 +51,24 @@ namespace SysTINSApp
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
-        {            
-            /*
+        {
+            List<Endereco> enderecos = new();
             Cliente cliente = new(
                                txtNome.Text,
                                txtCpf.Text,
                                txtTelefone.Text,
                                txtEmail.Text,
                                dtpData_Nasc.Value,
-                               chkAtivo.Checked
-                               Endereco.button
-                               );               
-            */
+                               chkAtivo.Checked,
+                               enderecos
+                               );
+            cliente.Inserir();
+            if (cliente.Id > 0)
+            {
+                CarregaGridClientes();
+                MessageBox.Show($"Cliente {cliente.Id} inserido com sucesso");
+                btnInserir.Enabled = false;
+            }
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -80,6 +94,12 @@ namespace SysTINSApp
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddEndereco_Click(object sender, EventArgs e)
+        {
+            FrmNovoEndereco frmNovoEndereco = new();
+            frmNovoEndereco.Show();
         }
     }
 }

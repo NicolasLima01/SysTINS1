@@ -23,7 +23,7 @@ namespace SysTINSClass
 
         public Cliente() { Enderecos = new(); }
         
-        public Cliente(string nome, string cpf, string? telefone, string? email, DateTime? data_nasc, DateTime? data_cad, bool ativo, List<Endereco> enderecos)
+        public Cliente(string nome, string cpf, string? telefone, string? email, DateTime? data_nasc, bool ativo, List<Endereco> enderecos)
         {
             Nome = nome;
             CPF = cpf;
