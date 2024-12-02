@@ -28,215 +28,256 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtCliente = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btnAdicionar = new Button();
+            lblClienteId = new Label();
+            txtClienteId = new TextBox();
+            txtCep = new TextBox();
+            txtLogradouro = new TextBox();
+            txtNumero = new TextBox();
+            txtComplemento = new TextBox();
+            txtBairro = new TextBox();
+            txtCidade = new TextBox();
+            lblCep = new Label();
+            lblLogradouro = new Label();
+            lblNumero = new Label();
+            lblComplemento = new Label();
+            lblBairro = new Label();
+            lblCidade = new Label();
+            lblUf = new Label();
+            lblTipoEndereco = new Label();
+            cmbUf = new ComboBox();
+            cmbTipoEndereco = new ComboBox();
+            btnAtualizar = new Button();
+            txtId = new TextBox();
+            lblId = new Label();
+            btnExcluir = new Button();
             SuspendLayout();
             // 
-            // txtCliente
+            // btnAdicionar
             // 
-            txtCliente.Location = new Point(55, 58);
-            txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(70, 23);
-            txtCliente.TabIndex = 0;
+            btnAdicionar.Location = new Point(456, 94);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(75, 40);
+            btnAdicionar.TabIndex = 0;
+            btnAdicionar.Text = "Adicionar";
+            btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
-            // textBox3
+            // lblClienteId
             // 
-            textBox3.Location = new Point(55, 146);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 2;
+            lblClienteId.AutoSize = true;
+            lblClienteId.Location = new Point(120, 25);
+            lblClienteId.Name = "lblClienteId";
+            lblClienteId.Size = new Size(57, 15);
+            lblClienteId.TabIndex = 1;
+            lblClienteId.Text = "Cliente Id";
             // 
-            // textBox4
+            // txtClienteId
             // 
-            textBox4.Location = new Point(55, 228);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 3;
+            txtClienteId.Location = new Point(120, 43);
+            txtClienteId.Name = "txtClienteId";
+            txtClienteId.ReadOnly = true;
+            txtClienteId.Size = new Size(70, 23);
+            txtClienteId.TabIndex = 2;
+            txtClienteId.Text = "25";
             // 
-            // textBox5
+            // txtCep
             // 
-            textBox5.Location = new Point(156, 58);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 4;
+            txtCep.Location = new Point(211, 43);
+            txtCep.Name = "txtCep";
+            txtCep.Size = new Size(100, 23);
+            txtCep.TabIndex = 3;
             // 
-            // textBox6
+            // txtLogradouro
             // 
-            textBox6.Location = new Point(181, 146);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(150, 23);
-            textBox6.TabIndex = 5;
+            txtLogradouro.Location = new Point(331, 43);
+            txtLogradouro.Name = "txtLogradouro";
+            txtLogradouro.Size = new Size(200, 23);
+            txtLogradouro.TabIndex = 4;
             // 
-            // textBox7
+            // txtNumero
             // 
-            textBox7.Location = new Point(181, 228);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(50, 23);
-            textBox7.TabIndex = 6;
+            txtNumero.Location = new Point(29, 116);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(70, 23);
+            txtNumero.TabIndex = 5;
             // 
-            // textBox8
+            // txtComplemento
             // 
-            textBox8.Location = new Point(283, 58);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(250, 23);
-            textBox8.TabIndex = 7;
+            txtComplemento.Location = new Point(120, 116);
+            txtComplemento.Name = "txtComplemento";
+            txtComplemento.Size = new Size(100, 23);
+            txtComplemento.TabIndex = 6;
             // 
-            // textBox9
+            // txtBairro
             // 
-            textBox9.Location = new Point(371, 146);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(100, 23);
-            textBox9.TabIndex = 8;
+            txtBairro.Location = new Point(240, 116);
+            txtBairro.Name = "txtBairro";
+            txtBairro.Size = new Size(150, 23);
+            txtBairro.TabIndex = 7;
             // 
-            // textBox10
+            // txtCidade
             // 
-            textBox10.Location = new Point(247, 229);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(100, 23);
-            textBox10.TabIndex = 9;
+            txtCidade.Location = new Point(30, 187);
+            txtCidade.Name = "txtCidade";
+            txtCidade.Size = new Size(174, 23);
+            txtCidade.TabIndex = 9;
             // 
-            // label1
+            // lblCep
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(55, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 10;
-            label1.Text = "label1";
+            lblCep.AutoSize = true;
+            lblCep.Location = new Point(211, 26);
+            lblCep.Name = "lblCep";
+            lblCep.Size = new Size(28, 15);
+            lblCep.TabIndex = 11;
+            lblCep.Text = "CEP";
             // 
-            // label2
+            // lblLogradouro
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(156, 40);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 11;
-            label2.Text = "label2";
+            lblLogradouro.AutoSize = true;
+            lblLogradouro.Location = new Point(331, 26);
+            lblLogradouro.Name = "lblLogradouro";
+            lblLogradouro.Size = new Size(69, 15);
+            lblLogradouro.TabIndex = 12;
+            lblLogradouro.Text = "Logradouro";
             // 
-            // label3
+            // lblNumero
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(283, 40);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 12;
-            label3.Text = "label3";
+            lblNumero.AutoSize = true;
+            lblNumero.Location = new Point(29, 98);
+            lblNumero.Name = "lblNumero";
+            lblNumero.Size = new Size(51, 15);
+            lblNumero.TabIndex = 13;
+            lblNumero.Text = "Número";
             // 
-            // label4
+            // lblComplemento
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(55, 128);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 13;
-            label4.Text = "label4";
+            lblComplemento.AutoSize = true;
+            lblComplemento.Location = new Point(120, 98);
+            lblComplemento.Name = "lblComplemento";
+            lblComplemento.Size = new Size(84, 15);
+            lblComplemento.TabIndex = 14;
+            lblComplemento.Text = "Complemento";
             // 
-            // label5
+            // lblBairro
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(181, 128);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 14;
-            label5.Text = "label5";
+            lblBairro.AutoSize = true;
+            lblBairro.Location = new Point(240, 98);
+            lblBairro.Name = "lblBairro";
+            lblBairro.Size = new Size(38, 15);
+            lblBairro.TabIndex = 15;
+            lblBairro.Text = "Bairro";
             // 
-            // label6
+            // lblCidade
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(371, 128);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 15;
-            label6.Text = "label6";
+            lblCidade.AutoSize = true;
+            lblCidade.Location = new Point(30, 169);
+            lblCidade.Name = "lblCidade";
+            lblCidade.Size = new Size(44, 15);
+            lblCidade.TabIndex = 16;
+            lblCidade.Text = "Cidade";
             // 
-            // label7
+            // lblUf
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(55, 210);
-            label7.Name = "label7";
-            label7.Size = new Size(38, 15);
-            label7.TabIndex = 16;
-            label7.Text = "label7";
+            lblUf.AutoSize = true;
+            lblUf.Location = new Point(225, 170);
+            lblUf.Name = "lblUf";
+            lblUf.Size = new Size(21, 15);
+            lblUf.TabIndex = 17;
+            lblUf.Text = "UF";
             // 
-            // label8
+            // lblTipoEndereco
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(181, 210);
-            label8.Name = "label8";
-            label8.Size = new Size(38, 15);
-            label8.TabIndex = 17;
-            label8.Text = "label8";
+            lblTipoEndereco.AutoSize = true;
+            lblTipoEndereco.Location = new Point(290, 169);
+            lblTipoEndereco.Name = "lblTipoEndereco";
+            lblTipoEndereco.Size = new Size(30, 15);
+            lblTipoEndereco.TabIndex = 18;
+            lblTipoEndereco.Text = "Tipo";
             // 
-            // label9
+            // cmbUf
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(247, 211);
-            label9.Name = "label9";
-            label9.Size = new Size(38, 15);
-            label9.TabIndex = 18;
-            label9.Text = "label9";
+            cmbUf.FormattingEnabled = true;
+            cmbUf.Items.AddRange(new object[] { "SP", "MG", "RJ", "ES", "SC", "RS", "PR", "DF", "GO", "MS", "MT", "BA", "AL", "SE", "PR", "PB", "RN", "CE", "PI", "MA", "PA", "AM", "RR", "RO", "AP", "AC", "TO" });
+            cmbUf.Location = new Point(225, 188);
+            cmbUf.Name = "cmbUf";
+            cmbUf.Size = new Size(45, 23);
+            cmbUf.TabIndex = 19;
             // 
-            // button1
+            // cmbTipoEndereco
             // 
-            button1.Location = new Point(377, 218);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 42);
-            button1.TabIndex = 19;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            cmbTipoEndereco.FormattingEnabled = true;
+            cmbTipoEndereco.Items.AddRange(new object[] { "RES", "COM" });
+            cmbTipoEndereco.Location = new Point(290, 187);
+            cmbTipoEndereco.Name = "cmbTipoEndereco";
+            cmbTipoEndereco.Size = new Size(100, 23);
+            cmbTipoEndereco.TabIndex = 20;
             // 
-            // button2
+            // btnAtualizar
             // 
-            button2.Location = new Point(458, 218);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 41);
-            button2.TabIndex = 20;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnAtualizar.Location = new Point(456, 140);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 41);
+            btnAtualizar.TabIndex = 21;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click_1;
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(29, 43);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(70, 23);
+            txtId.TabIndex = 22;
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Location = new Point(29, 25);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(17, 15);
+            lblId.TabIndex = 23;
+            lblId.Text = "Id";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(456, 187);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 41);
+            btnExcluir.TabIndex = 24;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // FrmNovoEndereco
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(596, 303);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox10);
-            Controls.Add(textBox9);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(txtCliente);
+            ClientSize = new Size(586, 247);
+            Controls.Add(btnExcluir);
+            Controls.Add(lblId);
+            Controls.Add(txtId);
+            Controls.Add(btnAtualizar);
+            Controls.Add(cmbTipoEndereco);
+            Controls.Add(cmbUf);
+            Controls.Add(lblTipoEndereco);
+            Controls.Add(lblUf);
+            Controls.Add(lblCidade);
+            Controls.Add(lblBairro);
+            Controls.Add(lblComplemento);
+            Controls.Add(lblNumero);
+            Controls.Add(lblLogradouro);
+            Controls.Add(lblCep);
+            Controls.Add(txtCidade);
+            Controls.Add(txtBairro);
+            Controls.Add(txtComplemento);
+            Controls.Add(txtNumero);
+            Controls.Add(txtLogradouro);
+            Controls.Add(txtCep);
+            Controls.Add(txtClienteId);
+            Controls.Add(lblClienteId);
+            Controls.Add(btnAdicionar);
             Name = "FrmNovoEndereco";
             Text = "FrmNovoEndereco";
             ResumeLayout(false);
@@ -245,25 +286,28 @@
 
         #endregion
 
-        private TextBox txtCliente;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Button button1;
-        private Button button2;
+        private Button btnAdicionar;
+        private Label lblClienteId;
+        private TextBox txtClienteId;
+        private TextBox txtCep;
+        private TextBox txtLogradouro;
+        private TextBox txtNumero;
+        private TextBox txtComplemento;
+        private TextBox txtBairro;
+        private TextBox txtCidade;
+        private Label lblCep;
+        private Label lblLogradouro;
+        private Label lblNumero;
+        private Label lblComplemento;
+        private Label lblBairro;
+        private Label lblCidade;
+        private Label lblUf;
+        private Label lblTipoEndereco;
+        private ComboBox cmbUf;
+        private ComboBox cmbTipoEndereco;
+        private Button btnAtualizar;
+        private TextBox txtId;
+        private Label lblId;
+        private Button btnExcluir;
     }
 }

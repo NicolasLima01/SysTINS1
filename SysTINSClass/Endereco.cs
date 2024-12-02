@@ -36,6 +36,19 @@ namespace SysTINSClass
             UF = uf;
             Tipo_endereco = tipo_endereco;
         }
+        public Endereco(int id, string? cep, string? logradouro, string? numero, string? complemento,
+                         string? bairro, string? cidade, string? uf, string? tipo_endereco)
+        {
+            Id = id;
+            CEP = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
+            Tipo_endereco = tipo_endereco;
+        }
         public Endereco(int id, Cliente cliente, string? cep, string? logradouro, string? numero, string? complemento,
                          string? bairro, string? cidade, string? uf, string? tipo_endereco)
         {
@@ -60,7 +73,7 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_endereco_insert";
-            cmd.Parameters.AddWithValue("spcliente_id", Cliente);
+            cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
             cmd.Parameters.AddWithValue("spcep", CEP);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
             cmd.Parameters.AddWithValue("spnumero", Numero);
@@ -102,7 +115,7 @@ namespace SysTINSClass
         /// <summary>
         /// Exclui um endereço do banco de dados
         /// </summary>
-        /// <param name="id">Id do cliente a ser deletado</param>
+        /// <param name="id">Id do cliente</param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
@@ -135,7 +148,7 @@ namespace SysTINSClass
         /// <returns></returns>
         public static List<Endereco> ListarPorClienteId(int ClienteId)
         {
-            List<Endereco>enderecos = new();
+            List<Endereco> enderecos = new();
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from enderecos where cliente_id = {ClienteId}";
             var dr = cmd.ExecuteReader();
@@ -146,7 +159,8 @@ namespace SysTINSClass
                         dr.GetString(2), dr.GetString(3), 
                         dr.GetString(4),dr.GetString(5),
                         dr.GetString(6), dr.GetString(7), 
-                        dr.GetString(8), dr.GetString(9)));
+                        dr.GetString(8), dr.GetString(9))
+                        );
             }
             return enderecos;
            

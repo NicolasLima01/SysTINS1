@@ -63,6 +63,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(187, 23);
             txtEmail.TabIndex = 2;
+            txtEmail.Text = "nicolas@gmail.com";
             // 
             // txtSenha
             // 
@@ -70,6 +71,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(187, 23);
             txtSenha.TabIndex = 3;
+            txtSenha.Text = "P@ssw0rd";
             txtSenha.UseSystemPasswordChar = true;
             // 
             // lblSenha

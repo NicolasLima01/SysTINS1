@@ -20,12 +20,13 @@ namespace SysTINSApp
 
         private void FrmNovoCliente_Load(object sender, EventArgs e)
         {
-            CarregaGrid();
+            CarregaGridClientes();
         }
-        private void CarregaGrid()
+        //Carrega o grid de clientes
+        private void CarregaGridClientes()
         {
-            var listaClientes = Cliente.ObterLista();
             dgvClientes.Rows.Clear();
+            var listaClientes = Cliente.ObterLista();
             int linha = 0;
             foreach (var cliente in listaClientes)
             {
@@ -41,20 +42,50 @@ namespace SysTINSApp
                 linha++;
             }
         }
+        //Carrega o grid de endereços por cliente
+        private void CarregaGridEnderecos(List<Endereco> Enderecos)
+        {
+            dgvEnderecosPorCliente.Rows.Clear(); //Apaga as linhas do data grid
+            int linha = 0;
+            foreach (var endereco in Enderecos)
+            {
+                dgvEnderecosPorCliente.Rows.Add(); //Adiciona nova linha no grid
+                dgvEnderecosPorCliente.Rows[linha].Cells[0].Value = endereco.Cliente.Id;
+                dgvEnderecosPorCliente.Rows[linha].Cells[1].Value = endereco.CEP;
+                dgvEnderecosPorCliente.Rows[linha].Cells[2].Value = endereco.Logradouro;
+                dgvEnderecosPorCliente.Rows[linha].Cells[3].Value = endereco.Numero;
+                dgvEnderecosPorCliente.Rows[linha].Cells[4].Value = endereco.Complemento;
+                dgvEnderecosPorCliente.Rows[linha].Cells[5].Value = endereco.Bairro;
+                dgvEnderecosPorCliente.Rows[linha].Cells[6].Value = endereco.Cidade;
+                dgvEnderecosPorCliente.Rows[linha].Cells[7].Value = endereco.UF;
+                dgvEnderecosPorCliente.Rows[linha].Cells[8].Value = endereco.Tipo_endereco;
+                linha++;
+            }
+        }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            /*
+            List<Endereco> enderecos = new();
             Cliente cliente = new(
                                txtNome.Text,
                                txtCpf.Text,
                                txtTelefone.Text,
                                txtEmail.Text,
                                dtpData_Nasc.Value,
-                               chkAtivo.Checked
-                               Endereco.button
-                               );               
-            */
+                               chkAtivo.Checked,
+                               enderecos
+                               );
+            cliente.Inserir();
+            if (cliente.Id > 0)
+            {
+                CarregaGridClientes();
+                MessageBox.Show($"Cliente {cliente.Id} inserido com sucesso");
+                btnInserir.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show($"Falha ao inserir o cliente");
+            }
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -70,6 +101,11 @@ namespace SysTINSApp
             dtpData_Nasc.Text = cliente.Data_nasc.ToString();
             chkAtivo.Checked = (bool)cliente.Ativo;
             //MessageBox.Show(linhaAtual.ToString());
+
+            //Ativa o group box de enderecos e carrega o data grid
+            grbEndereco.Enabled = true;
+            cliente.Enderecos = Endereco.ListarPorClienteId(cliente.Id);
+            CarregaGridEnderecos(cliente.Enderecos);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -85,15 +121,40 @@ namespace SysTINSApp
         private void btnAddEndereco_Click(object sender, EventArgs e)
         {
             FrmNovoEndereco frmNovoEndereco = new();
-            if (frmNovoEndereco.ShowDialog() == DialogResult.OK)
+            frmNovoEndereco.Show();
+        }
+
+        private void dgvEnderecosPorCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmNovoEndereco frmNovoEndereco = new();
+            frmNovoEndereco.Show();        
+        }
+
+        //Atualiza os dados do cliente
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new();
+            cliente.Id = int.Parse(txtId.Text);
+            cliente.Nome = txtNome.Text;
+            cliente.Telefone = txtTelefone.Text;
+            cliente.Data_nasc = dtpData_Nasc.Value;
+            if (cliente.Atualizar())
             {
-                Show();
+                CarregaGridClientes();
+                MessageBox.Show("Cliente atualizado com sucesso");
             }
-            else
+        }
+
+        private void btnArquivar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new();
+            cliente.Id = int.Parse(txtId.Text);
+            cliente.Arquivar(cliente.Id);
+            if (cliente.Ativo == false)
             {
-                Application.Exit();                
+                CarregaGridClientes();
+                MessageBox.Show("Cliente arquivado com sucesso");
             }
-            Show();
         }
     }
 }
