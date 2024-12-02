@@ -43,7 +43,7 @@ namespace SysTINSApp
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
-        {            
+        {
             /*
             Cliente cliente = new(
                                txtNome.Text,
@@ -80,6 +80,20 @@ namespace SysTINSApp
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddEndereco_Click(object sender, EventArgs e)
+        {
+            FrmNovoEndereco frmNovoEndereco = new();
+            if (frmNovoEndereco.ShowDialog() == DialogResult.OK)
+            {
+                Show();
+            }
+            else
+            {
+                Application.Exit();                
+            }
+            Show();
         }
     }
 }

@@ -260,12 +260,13 @@
             // 
             // btnAddEndereco
             // 
-            btnAddEndereco.Location = new Point(615, 216);
+            btnAddEndereco.Location = new Point(638, 113);
             btnAddEndereco.Name = "btnAddEndereco";
             btnAddEndereco.Size = new Size(75, 51);
             btnAddEndereco.TabIndex = 19;
-            btnAddEndereco.Text = "button1";
+            btnAddEndereco.Text = "Adicionar Endereco";
             btnAddEndereco.UseVisualStyleBackColor = true;
+            btnAddEndereco.Click += btnAddEndereco_Click;
             // 
             // FrmNovoCliente
             // 
