@@ -31,7 +31,7 @@ namespace SysTINSApp
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
-        {   
+        {
             /*
             //Resolução antes do Well
             Produto produto = new();
@@ -69,11 +69,16 @@ namespace SysTINSApp
             //Declaração de produto do ItemPedido
             ItemPedido itemPedido = new();
             itemPedido.PedidoId = Convert.ToInt32(txtIdPedido.Text);
+            itemPedido.Produto = Produto.ConsultarPorCodBar(txtCodBar.Text);
+
+            /*
+            //resolucao antes do Well
             itemPedido.Produto.Cod_barras = txtCodBar.Text;
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select id from produtos where cod_barras = {itemPedido.Produto.Cod_barras}";
             itemPedido.Produto = Produto.ConsultarPorID(Convert.ToInt32(cmd.ExecuteScalar()));
             cmd.Connection.Close();
+            */
 
             //carregando o datagrid de pedidos
             dgvItensPedido.Rows.Clear();
@@ -110,7 +115,7 @@ namespace SysTINSApp
         private void txtIdCliente_Leave(object sender, EventArgs e)
         {
             //O código vai acontecer quando o controle deixar de ser ativo.
-            if (txtIdCliente.Text.Length >= 4)
+            if (txtIdCliente.Text.Length >= 2)
             {
                 Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtIdCliente.Text));
                 txtNomeCliente.Text = $"{cliente.Nome} - {cliente.CPF}";
@@ -122,7 +127,7 @@ namespace SysTINSApp
             if (txtCodBar.Text.Length > 9)
             {
                 Produto produto = Produto.ConsultarPorCodBar(txtCodBar.Text);
-                if(produto.Id > 0)
+                if (produto.Id > 0)
                 {
                     txtDescricao.Text = produto.Descricao;
                     txtValorUnit.Text = produto.Valor_unidade.ToString();
@@ -132,6 +137,76 @@ namespace SysTINSApp
                     MessageBox.Show("Produto não cadastrado");
                 }
             }
+        }
+
+        private void txtIdCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIdCliente_MouseHover(object sender, EventArgs e)
+        {
+            dgvConsultaCliente.Visible = true;
+            dgvConsultaCliente.Rows.Clear();
+            List<Cliente> listaClientes = new();
+            listaClientes = Cliente.ObterLista();
+            int linha = 0;
+            foreach (var cliente in listaClientes)
+            {
+                dgvConsultaCliente.Rows.Add();
+                dgvConsultaCliente.Rows[linha].Cells[0].Value = cliente.Id;
+                dgvConsultaCliente.Rows[linha].Cells[1].Value = cliente.Nome;
+                linha++;
+            }
+        }
+
+        private void dgvConsultaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int linhaAtual = dgvConsultaCliente.CurrentRow.Index;
+            int idUser = Convert.ToInt32(dgvConsultaCliente.Rows[linhaAtual].Cells[0].Value);
+            var cliente = Cliente.ConsultarPorId(idUser);
+            txtIdCliente.Text = cliente.Id.ToString();
+            txtNomeCliente.Text = cliente.Nome;
+            if (cliente.Id > 0)
+            {
+                dgvConsultaCliente.Visible = false;
+            }
+        }
+
+        private void txtCodBar_MouseHover(object sender, EventArgs e)
+        {
+            dgvConsultaProduto.Visible = true;
+            dgvConsultaProduto.Rows.Clear();
+            List<Produto> listaProdutos = new();
+            listaProdutos = Produto.ObterLista();
+            int linha = 0;
+            foreach (var produto in listaProdutos)
+            {
+                dgvConsultaProduto.Rows.Add();
+                dgvConsultaProduto.Rows[linha].Cells[0].Value = produto.Cod_barras;
+                dgvConsultaProduto.Rows[linha].Cells[1].Value = produto.Descricao;
+                dgvConsultaProduto.Rows[linha].Cells[2].Value = produto.Valor_unidade;
+                linha++;
+            }
+        }
+
+        private void dgvConsultaProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int linhaAtual = dgvConsultaProduto.CurrentRow.Index;
+            string CodProd = Convert.ToString(dgvConsultaProduto.Rows[linhaAtual].Cells[0].Value);
+            var produto = Produto.ConsultarPorCodBar(CodProd);
+            txtCodBar.Text = produto.Cod_barras.ToString();
+            txtDescricao.Text = produto.Descricao;
+            txtValorUnit.Text = produto.Valor_unidade.ToString();
+            if (produto.Id > 0)
+            {
+                dgvConsultaProduto.Visible = false;
+            }
+        }
+
+        private void txtCodBar_MouseLeave(object sender, EventArgs e)
+        {
+            //dgvConsultaProduto.Visible = false;
         }
     }
 }

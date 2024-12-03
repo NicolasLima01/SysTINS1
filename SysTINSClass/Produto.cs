@@ -149,7 +149,7 @@ namespace SysTINSClass
             Produto produto = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"select * from produtos where id = {codbar}";
+            cmd.CommandText = $"select * from produtos where cod_barras = {codbar}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
