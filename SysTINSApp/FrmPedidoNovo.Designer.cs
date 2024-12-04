@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             grbIndentificacao = new GroupBox();
+            btnNovoCliente = new Button();
             dgvConsultaCliente = new DataGridView();
             clnId = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
@@ -39,6 +40,7 @@
             txtUsuario = new TextBox();
             label3 = new Label();
             grbItens = new GroupBox();
+            btnNovoProduto = new Button();
             dgvConsultaProduto = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -88,6 +90,7 @@
             // 
             // grbIndentificacao
             // 
+            grbIndentificacao.Controls.Add(btnNovoCliente);
             grbIndentificacao.Controls.Add(dgvConsultaCliente);
             grbIndentificacao.Controls.Add(button1);
             grbIndentificacao.Controls.Add(btnInserePedido);
@@ -101,6 +104,17 @@
             grbIndentificacao.TabIndex = 0;
             grbIndentificacao.TabStop = false;
             grbIndentificacao.Text = "Identificação";
+            // 
+            // btnNovoCliente
+            // 
+            btnNovoCliente.Location = new Point(127, 123);
+            btnNovoCliente.Name = "btnNovoCliente";
+            btnNovoCliente.Size = new Size(78, 23);
+            btnNovoCliente.TabIndex = 7;
+            btnNovoCliente.Text = "Novo";
+            btnNovoCliente.UseVisualStyleBackColor = true;
+            btnNovoCliente.Visible = false;
+            btnNovoCliente.Click += btnNovoCliente_Click;
             // 
             // dgvConsultaCliente
             // 
@@ -165,8 +179,8 @@
             txtIdCliente.Size = new Size(78, 27);
             txtIdCliente.TabIndex = 1;
             txtIdCliente.TextChanged += txtIdCliente_TextChanged;
+            txtIdCliente.Enter += txtIdCliente_Enter;
             txtIdCliente.Leave += txtIdCliente_Leave;
-            txtIdCliente.MouseHover += txtIdCliente_MouseHover;
             // 
             // txtNomeCliente
             // 
@@ -196,6 +210,7 @@
             // 
             // grbItens
             // 
+            grbItens.Controls.Add(btnNovoProduto);
             grbItens.Controls.Add(dgvConsultaProduto);
             grbItens.Controls.Add(label4);
             grbItens.Controls.Add(rbReal);
@@ -222,6 +237,17 @@
             grbItens.TabStop = false;
             grbItens.Text = "Itens do Pedido";
             // 
+            // btnNovoProduto
+            // 
+            btnNovoProduto.Location = new Point(34, 20);
+            btnNovoProduto.Name = "btnNovoProduto";
+            btnNovoProduto.Size = new Size(75, 23);
+            btnNovoProduto.TabIndex = 17;
+            btnNovoProduto.Text = "Novo";
+            btnNovoProduto.UseVisualStyleBackColor = true;
+            btnNovoProduto.Visible = false;
+            btnNovoProduto.Click += btnNovoProduto_Click;
+            // 
             // dgvConsultaProduto
             // 
             dgvConsultaProduto.AllowUserToAddRows = false;
@@ -238,7 +264,7 @@
             dgvConsultaProduto.Size = new Size(393, 130);
             dgvConsultaProduto.TabIndex = 16;
             dgvConsultaProduto.Visible = false;
-            dgvConsultaProduto.CellContentClick += dgvConsultaCliente_CellContentClick;
+            dgvConsultaProduto.CellContentClick += dgvConsultaProduto_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -306,6 +332,7 @@
             txtTotalItens.Size = new Size(122, 33);
             txtTotalItens.TabIndex = 5;
             txtTotalItens.TextAlign = HorizontalAlignment.Right;
+            txtTotalItens.TextChanged += txtTotalItens_TextChanged;
             // 
             // label10
             // 
@@ -394,8 +421,8 @@
             txtCodBar.Size = new Size(110, 23);
             txtCodBar.TabIndex = 0;
             txtCodBar.TextChanged += txtCodBar_TextChanged;
-            txtCodBar.MouseLeave += txtCodBar_MouseLeave;
-            txtCodBar.MouseHover += txtCodBar_MouseHover;
+            txtCodBar.Enter += txtCodBar_Enter;
+            txtCodBar.Leave += txtCodBar_Leave;
             // 
             // txtDescricao
             // 
@@ -515,7 +542,7 @@
             txtIdPedido.Location = new Point(592, 23);
             txtIdPedido.Name = "txtIdPedido";
             txtIdPedido.Size = new Size(181, 43);
-            txtIdPedido.TabIndex = 4;
+            txtIdPedido.TabIndex = 3;
             // 
             // txtTotal
             // 
@@ -688,5 +715,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn clnValorProduto;
         private TextBox txtIdCliente;
+        private Button btnNovoCliente;
+        private Button btnNovoProduto;
     }
 }

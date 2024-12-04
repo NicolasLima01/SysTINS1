@@ -18,6 +18,7 @@ namespace SysTINSApp
             InitializeComponent();
         }
 
+        //Adiciona um novo pedido
         private void btnInserePedido_Click(object sender, EventArgs e)
         {
             Pedido pedido = new(Usuario.ObterPorID(Program.UsuarioLogado.Id),
@@ -120,8 +121,10 @@ namespace SysTINSApp
                 Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtIdCliente.Text));
                 txtNomeCliente.Text = $"{cliente.Nome} - {cliente.CPF}";
             }
+            dgvConsultaCliente.Visible = false;
         }
 
+        //Ocorre quando o texto de codbar muda
         private void txtCodBar_TextChanged(object sender, EventArgs e)
         {
             if (txtCodBar.Text.Length > 9)
@@ -144,9 +147,11 @@ namespace SysTINSApp
 
         }
 
-        private void txtIdCliente_MouseHover(object sender, EventArgs e)
+        //Ocorre quando o controle está sobre o txtIdCliente
+        private void txtIdCliente_Enter(object sender, EventArgs e)
         {
             dgvConsultaCliente.Visible = true;
+            btnNovoCliente.Visible = true;
             dgvConsultaCliente.Rows.Clear();
             List<Cliente> listaClientes = new();
             listaClientes = Cliente.ObterLista();
@@ -158,8 +163,10 @@ namespace SysTINSApp
                 dgvConsultaCliente.Rows[linha].Cells[1].Value = cliente.Nome;
                 linha++;
             }
+
         }
 
+        //Ocorre quando clica no conteudo do dgv de consulta de cliente
         private void dgvConsultaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int linhaAtual = dgvConsultaCliente.CurrentRow.Index;
@@ -172,10 +179,12 @@ namespace SysTINSApp
                 dgvConsultaCliente.Visible = false;
             }
         }
+        //Ocorre quando o controle está no txtCodBar
 
-        private void txtCodBar_MouseHover(object sender, EventArgs e)
+        private void txtCodBar_Enter(object sender, EventArgs e)
         {
             dgvConsultaProduto.Visible = true;
+            btnNovoProduto.Visible = true;
             dgvConsultaProduto.Rows.Clear();
             List<Produto> listaProdutos = new();
             listaProdutos = Produto.ObterLista();
@@ -190,6 +199,13 @@ namespace SysTINSApp
             }
         }
 
+        //Ocorre quando o controle sai do txtCodBar
+        private void txtCodBar_Leave(object sender, EventArgs e)
+        {
+            dgvConsultaProduto.Visible = false;
+        }
+
+        //Ocorre ao clicar no conteudo de dgvConsultaProduto
         private void dgvConsultaProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int linhaAtual = dgvConsultaProduto.CurrentRow.Index;
@@ -204,9 +220,21 @@ namespace SysTINSApp
             }
         }
 
-        private void txtCodBar_MouseLeave(object sender, EventArgs e)
+        private void btnNovoProduto_Click(object sender, EventArgs e)
         {
-            //dgvConsultaProduto.Visible = false;
+            FrmProdutoWell frmProduto = new();
+            frmProduto.Show();
+        }
+
+        private void btnNovoCliente_Click(object sender, EventArgs e)
+        {
+            FrmNovoCliente frmNovoCliente = new();
+            frmNovoCliente.Show();
+        }
+
+        private void txtTotalItens_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
