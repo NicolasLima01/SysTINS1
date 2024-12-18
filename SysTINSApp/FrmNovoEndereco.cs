@@ -13,9 +13,51 @@ namespace SysTINSApp
 {
     public partial class FrmNovoEndereco : Form
     {
+
+        public int? ClienteId { get; set; }//Propriedade para pegar o id do cliente no FrmNovoCiente  
+        public Endereco? Endereco { get; set; }// Propriedade para pegar o id do endereco no dgvEnderecos
+
         public FrmNovoEndereco()
         {
             InitializeComponent();
+        }
+
+        //Construtor para receber o id do cliente
+        public FrmNovoEndereco(int IdCliente)
+        {
+            ClienteId = IdCliente;
+            InitializeComponent();
+        }
+
+        //Construtor feito para o ContentClick do dgvEnderecos
+        public FrmNovoEndereco(Endereco endereco)
+        {
+            InitializeComponent();
+            Endereco = endereco;
+        }
+
+        private void FrmNovoEndereco_Load(object sender, EventArgs e)
+        {
+            //Ocorre se a propriedade de ClienteId é entregue
+            if (ClienteId > 0)
+            {
+                txtClienteId.Text = Convert.ToString(ClienteId);
+            }
+
+            //Ocorre se a propriedade de Endereco é entregue
+            if (Endereco != null)
+            {
+                txtId.Text = Convert.ToString(Endereco.Id);
+                txtClienteId.Text = Convert.ToString(Endereco.Cliente.Id);
+                txtCep.Text = Endereco.CEP;
+                txtLogradouro.Text = Endereco.Logradouro;
+                txtNumero.Text = Endereco.Numero;
+                txtComplemento.Text = Endereco.Complemento;
+                txtBairro.Text = Endereco.Bairro;
+                txtCidade.Text = Endereco.Cidade;
+                cmbUf.SelectedItem = Endereco.UF;
+                cmbTipoEndereco.SelectedItem = Endereco.Tipo_endereco;
+            }
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -43,11 +85,6 @@ namespace SysTINSApp
             }
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAtualizar_Click_1(object sender, EventArgs e)
         {
             Endereco endereco = new();
@@ -71,6 +108,6 @@ namespace SysTINSApp
             Endereco endereco = new();
             endereco.Id = Convert.ToInt32(txtId.Text);
             endereco.Excluir(endereco.Id);
-        }
+        }     
     }
 }

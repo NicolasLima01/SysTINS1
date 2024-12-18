@@ -95,7 +95,7 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from pedidos";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                  lista.Add(new(dr.GetInt32(0),
                     Usuario.ObterPorID(dr.GetInt32(1)),

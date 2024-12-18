@@ -82,7 +82,11 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("spcidade", Cidade);
             cmd.Parameters.AddWithValue("spuf", UF);
             cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_endereco);
-            cmd.ExecuteNonQuery();
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+            }
             cmd.Connection.Close();
         }
         /// <summary>
@@ -152,7 +156,7 @@ namespace SysTINSClass
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from enderecos where cliente_id = {ClienteId}";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 enderecos.Add(new(dr.GetInt32(0), 
                         Cliente.ConsultarPorId(dr.GetInt32(1)), 

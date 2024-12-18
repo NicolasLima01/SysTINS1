@@ -55,7 +55,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(456, 94);
+            btnAdicionar.Location = new Point(441, 95);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 40);
             btnAdicionar.TabIndex = 0;
@@ -79,7 +79,6 @@
             txtClienteId.ReadOnly = true;
             txtClienteId.Size = new Size(70, 23);
             txtClienteId.TabIndex = 2;
-            txtClienteId.Text = "25";
             // 
             // txtCep
             // 
@@ -92,33 +91,33 @@
             // 
             txtLogradouro.Location = new Point(331, 43);
             txtLogradouro.Name = "txtLogradouro";
-            txtLogradouro.Size = new Size(200, 23);
+            txtLogradouro.Size = new Size(201, 23);
             txtLogradouro.TabIndex = 4;
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(29, 116);
+            txtNumero.Location = new Point(29, 126);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(70, 23);
             txtNumero.TabIndex = 5;
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(120, 116);
+            txtComplemento.Location = new Point(120, 126);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.Size = new Size(100, 23);
             txtComplemento.TabIndex = 6;
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(240, 116);
+            txtBairro.Location = new Point(240, 126);
             txtBairro.Name = "txtBairro";
             txtBairro.Size = new Size(150, 23);
             txtBairro.TabIndex = 7;
             // 
             // txtCidade
             // 
-            txtCidade.Location = new Point(30, 187);
+            txtCidade.Location = new Point(30, 205);
             txtCidade.Name = "txtCidade";
             txtCidade.Size = new Size(174, 23);
             txtCidade.TabIndex = 9;
@@ -144,7 +143,7 @@
             // lblNumero
             // 
             lblNumero.AutoSize = true;
-            lblNumero.Location = new Point(29, 98);
+            lblNumero.Location = new Point(29, 108);
             lblNumero.Name = "lblNumero";
             lblNumero.Size = new Size(51, 15);
             lblNumero.TabIndex = 13;
@@ -153,7 +152,7 @@
             // lblComplemento
             // 
             lblComplemento.AutoSize = true;
-            lblComplemento.Location = new Point(120, 98);
+            lblComplemento.Location = new Point(120, 108);
             lblComplemento.Name = "lblComplemento";
             lblComplemento.Size = new Size(84, 15);
             lblComplemento.TabIndex = 14;
@@ -162,7 +161,7 @@
             // lblBairro
             // 
             lblBairro.AutoSize = true;
-            lblBairro.Location = new Point(240, 98);
+            lblBairro.Location = new Point(240, 108);
             lblBairro.Name = "lblBairro";
             lblBairro.Size = new Size(38, 15);
             lblBairro.TabIndex = 15;
@@ -171,7 +170,7 @@
             // lblCidade
             // 
             lblCidade.AutoSize = true;
-            lblCidade.Location = new Point(30, 169);
+            lblCidade.Location = new Point(30, 187);
             lblCidade.Name = "lblCidade";
             lblCidade.Size = new Size(44, 15);
             lblCidade.TabIndex = 16;
@@ -180,7 +179,7 @@
             // lblUf
             // 
             lblUf.AutoSize = true;
-            lblUf.Location = new Point(225, 170);
+            lblUf.Location = new Point(225, 188);
             lblUf.Name = "lblUf";
             lblUf.Size = new Size(21, 15);
             lblUf.TabIndex = 17;
@@ -189,7 +188,7 @@
             // lblTipoEndereco
             // 
             lblTipoEndereco.AutoSize = true;
-            lblTipoEndereco.Location = new Point(290, 169);
+            lblTipoEndereco.Location = new Point(290, 187);
             lblTipoEndereco.Name = "lblTipoEndereco";
             lblTipoEndereco.Size = new Size(30, 15);
             lblTipoEndereco.TabIndex = 18;
@@ -199,7 +198,7 @@
             // 
             cmbUf.FormattingEnabled = true;
             cmbUf.Items.AddRange(new object[] { "SP", "MG", "RJ", "ES", "SC", "RS", "PR", "DF", "GO", "MS", "MT", "BA", "AL", "SE", "PR", "PB", "RN", "CE", "PI", "MA", "PA", "AM", "RR", "RO", "AP", "AC", "TO" });
-            cmbUf.Location = new Point(225, 188);
+            cmbUf.Location = new Point(225, 206);
             cmbUf.Name = "cmbUf";
             cmbUf.Size = new Size(45, 23);
             cmbUf.TabIndex = 19;
@@ -208,14 +207,14 @@
             // 
             cmbTipoEndereco.FormattingEnabled = true;
             cmbTipoEndereco.Items.AddRange(new object[] { "RES", "COM" });
-            cmbTipoEndereco.Location = new Point(290, 187);
+            cmbTipoEndereco.Location = new Point(290, 205);
             cmbTipoEndereco.Name = "cmbTipoEndereco";
             cmbTipoEndereco.Size = new Size(100, 23);
             cmbTipoEndereco.TabIndex = 20;
             // 
             // btnAtualizar
             // 
-            btnAtualizar.Location = new Point(456, 140);
+            btnAtualizar.Location = new Point(441, 141);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 41);
             btnAtualizar.TabIndex = 21;
@@ -242,7 +241,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(456, 187);
+            btnExcluir.Location = new Point(441, 188);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(75, 41);
             btnExcluir.TabIndex = 24;
@@ -254,7 +253,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(586, 247);
+            ClientSize = new Size(550, 258);
             Controls.Add(btnExcluir);
             Controls.Add(lblId);
             Controls.Add(txtId);
@@ -280,6 +279,7 @@
             Controls.Add(btnAdicionar);
             Name = "FrmNovoEndereco";
             Text = "FrmNovoEndereco";
+            Load += FrmNovoEndereco_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -72,7 +72,11 @@ namespace SysTINSClass
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spdatanasc", Data_nasc);
-            cmd.ExecuteNonQuery();
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+            }
             cmd.Connection.Close();
         }
         /// <summary>
@@ -132,10 +136,9 @@ namespace SysTINSClass
         {
             List<Cliente> clientes = new();
             var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from clientes order by nome asc";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 clientes.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4),
                             dr.GetDateTime(5), dr.GetDateTime(6), dr.GetBoolean(7)));

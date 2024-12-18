@@ -54,7 +54,8 @@
             chkAtivo = new CheckBox();
             btnAddEndereco = new Button();
             grbEndereco = new GroupBox();
-            dgvEnderecosPorCliente = new DataGridView();
+            dgvEnderecos = new DataGridView();
+            clnEnderecoId = new DataGridViewTextBoxColumn();
             clnClienteId = new DataGridViewTextBoxColumn();
             clnCep = new DataGridViewTextBoxColumn();
             clnLogradouro = new DataGridViewTextBoxColumn();
@@ -66,9 +67,10 @@
             clnTipoEndereco = new DataGridViewTextBoxColumn();
             btnAtualizar = new Button();
             btnArquivar = new Button();
+            lblAvisoContent = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             grbEndereco.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEnderecosPorCliente).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
             SuspendLayout();
             // 
             // txtId
@@ -179,6 +181,7 @@
             btnCancelar.TabIndex = 15;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // dgvClientes
             // 
@@ -192,6 +195,7 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowHeadersVisible = false;
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(965, 220);
             dgvClientes.TabIndex = 16;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
@@ -280,13 +284,12 @@
             chkAtivo.TabIndex = 18;
             chkAtivo.Text = "Ativo";
             chkAtivo.UseVisualStyleBackColor = true;
-            chkAtivo.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // btnAddEndereco
             // 
-            btnAddEndereco.Location = new Point(162, 184);
+            btnAddEndereco.Location = new Point(17, 185);
             btnAddEndereco.Name = "btnAddEndereco";
-            btnAddEndereco.Size = new Size(75, 32);
+            btnAddEndereco.Size = new Size(409, 32);
             btnAddEndereco.TabIndex = 19;
             btnAddEndereco.Text = "Adicionar";
             btnAddEndereco.UseVisualStyleBackColor = true;
@@ -295,31 +298,41 @@
             // grbEndereco
             // 
             grbEndereco.BackColor = SystemColors.HighlightText;
-            grbEndereco.Controls.Add(dgvEnderecosPorCliente);
+            grbEndereco.Controls.Add(lblAvisoContent);
+            grbEndereco.Controls.Add(dgvEnderecos);
             grbEndereco.Controls.Add(btnAddEndereco);
             grbEndereco.Enabled = false;
             grbEndereco.Location = new Point(529, 61);
             grbEndereco.Name = "grbEndereco";
-            grbEndereco.Size = new Size(411, 223);
+            grbEndereco.Size = new Size(443, 223);
             grbEndereco.TabIndex = 20;
             grbEndereco.TabStop = false;
             grbEndereco.Text = "Endereço";
             // 
-            // dgvEnderecosPorCliente
+            // dgvEnderecos
             // 
-            dgvEnderecosPorCliente.AllowUserToAddRows = false;
-            dgvEnderecosPorCliente.AllowUserToDeleteRows = false;
-            dgvEnderecosPorCliente.AllowUserToResizeColumns = false;
-            dgvEnderecosPorCliente.AllowUserToResizeRows = false;
-            dgvEnderecosPorCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEnderecosPorCliente.Columns.AddRange(new DataGridViewColumn[] { clnClienteId, clnCep, clnLogradouro, clnNumero, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEndereco });
-            dgvEnderecosPorCliente.Location = new Point(16, 22);
-            dgvEnderecosPorCliente.Name = "dgvEnderecosPorCliente";
-            dgvEnderecosPorCliente.ReadOnly = true;
-            dgvEnderecosPorCliente.RowHeadersVisible = false;
-            dgvEnderecosPorCliente.Size = new Size(380, 156);
-            dgvEnderecosPorCliente.TabIndex = 20;
-            dgvEnderecosPorCliente.CellContentClick += dgvEnderecosPorCliente_CellContentClick;
+            dgvEnderecos.AllowUserToAddRows = false;
+            dgvEnderecos.AllowUserToDeleteRows = false;
+            dgvEnderecos.AllowUserToResizeColumns = false;
+            dgvEnderecos.AllowUserToResizeRows = false;
+            dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { clnEnderecoId, clnClienteId, clnCep, clnLogradouro, clnNumero, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEndereco });
+            dgvEnderecos.Location = new Point(17, 22);
+            dgvEnderecos.Name = "dgvEnderecos";
+            dgvEnderecos.ReadOnly = true;
+            dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEnderecos.Size = new Size(409, 143);
+            dgvEnderecos.TabIndex = 20;
+            dgvEnderecos.CellContentClick += dgvEnderecosPorCliente_CellContentClick;
+            // 
+            // clnEnderecoId
+            // 
+            clnEnderecoId.Frozen = true;
+            clnEnderecoId.HeaderText = "ID";
+            clnEnderecoId.Name = "clnEnderecoId";
+            clnEnderecoId.ReadOnly = true;
+            clnEnderecoId.Width = 60;
             // 
             // clnClienteId
             // 
@@ -413,6 +426,17 @@
             btnArquivar.UseVisualStyleBackColor = true;
             btnArquivar.Click += btnArquivar_Click;
             // 
+            // lblAvisoContent
+            // 
+            lblAvisoContent.AutoSize = true;
+            lblAvisoContent.ForeColor = Color.Red;
+            lblAvisoContent.Location = new Point(17, 168);
+            lblAvisoContent.Name = "lblAvisoContent";
+            lblAvisoContent.Size = new Size(210, 15);
+            lblAvisoContent.TabIndex = 21;
+            lblAvisoContent.Text = "*Clique no endereço para mais opções";
+            lblAvisoContent.Visible = false;
+            // 
             // FrmNovoCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -442,7 +466,8 @@
             Load += FrmNovoCliente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             grbEndereco.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvEnderecosPorCliente).EndInit();
+            grbEndereco.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -477,7 +502,10 @@
         private DataGridViewTextBoxColumn clnData_Nasc;
         private DataGridViewTextBoxColumn clnData_cad;
         private DataGridViewTextBoxColumn clnAtivo;
-        private DataGridView dgvEnderecosPorCliente;
+        private DataGridView dgvEnderecos;
+        private Button btnAtualizar;
+        private Button btnArquivar;
+        private DataGridViewTextBoxColumn clnEnderecoId;
         private DataGridViewTextBoxColumn clnClienteId;
         private DataGridViewTextBoxColumn clnCep;
         private DataGridViewTextBoxColumn clnLogradouro;
@@ -487,7 +515,6 @@
         private DataGridViewTextBoxColumn clnCidade;
         private DataGridViewTextBoxColumn clnUf;
         private DataGridViewTextBoxColumn clnTipoEndereco;
-        private Button btnAtualizar;
-        private Button btnArquivar;
+        private Label lblAvisoContent;
     }
 }

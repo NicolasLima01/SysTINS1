@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SysTINSClass;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SysTINSApp
 {
@@ -22,6 +24,7 @@ namespace SysTINSApp
         {
             CarregaGridClientes();
         }
+
         //Carrega o grid de clientes
         private void CarregaGridClientes()
         {
@@ -42,23 +45,25 @@ namespace SysTINSApp
                 linha++;
             }
         }
+
         //Carrega o grid de endereços por cliente
         private void CarregaGridEnderecos(List<Endereco> Enderecos)
         {
-            dgvEnderecosPorCliente.Rows.Clear(); //Apaga as linhas do data grid
+            dgvEnderecos.Rows.Clear(); //Apaga as linhas do data grid
             int linha = 0;
             foreach (var endereco in Enderecos)
             {
-                dgvEnderecosPorCliente.Rows.Add(); //Adiciona nova linha no grid
-                dgvEnderecosPorCliente.Rows[linha].Cells[0].Value = endereco.Cliente.Id;
-                dgvEnderecosPorCliente.Rows[linha].Cells[1].Value = endereco.CEP;
-                dgvEnderecosPorCliente.Rows[linha].Cells[2].Value = endereco.Logradouro;
-                dgvEnderecosPorCliente.Rows[linha].Cells[3].Value = endereco.Numero;
-                dgvEnderecosPorCliente.Rows[linha].Cells[4].Value = endereco.Complemento;
-                dgvEnderecosPorCliente.Rows[linha].Cells[5].Value = endereco.Bairro;
-                dgvEnderecosPorCliente.Rows[linha].Cells[6].Value = endereco.Cidade;
-                dgvEnderecosPorCliente.Rows[linha].Cells[7].Value = endereco.UF;
-                dgvEnderecosPorCliente.Rows[linha].Cells[8].Value = endereco.Tipo_endereco;
+                dgvEnderecos.Rows.Add(); //Adiciona nova linha no grid
+                dgvEnderecos.Rows[linha].Cells[0].Value = endereco.Id;
+                dgvEnderecos.Rows[linha].Cells[1].Value = endereco.Cliente.Id;
+                dgvEnderecos.Rows[linha].Cells[2].Value = endereco.CEP;
+                dgvEnderecos.Rows[linha].Cells[3].Value = endereco.Logradouro;
+                dgvEnderecos.Rows[linha].Cells[4].Value = endereco.Numero;
+                dgvEnderecos.Rows[linha].Cells[5].Value = endereco.Complemento;
+                dgvEnderecos.Rows[linha].Cells[6].Value = endereco.Bairro;
+                dgvEnderecos.Rows[linha].Cells[7].Value = endereco.Cidade;
+                dgvEnderecos.Rows[linha].Cells[8].Value = endereco.UF;
+                dgvEnderecos.Rows[linha].Cells[9].Value = endereco.Tipo_endereco;
                 linha++;
             }
         }
@@ -102,32 +107,51 @@ namespace SysTINSApp
             chkAtivo.Checked = (bool)cliente.Ativo;
             //MessageBox.Show(linhaAtual.ToString());
 
+            btnInserir.Enabled = false; //Desativa o botao de inserir
+
             //Ativa o group box de enderecos e carrega o data grid
             grbEndereco.Enabled = true;
             cliente.Enderecos = Endereco.ListarPorClienteId(cliente.Id);
             CarregaGridEnderecos(cliente.Enderecos);
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+            
 
-        }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            //Caso o dgvEnderecos tenha linhas, aparecerá um aviso abaixo do grid de clientes
+            if (dgvEnderecos.Rows.Count != 0)
+            {
+                lblAvisoContent.Visible = true;
+            }
+            else
+            {
+                lblAvisoContent.Visible = false;
+            }
         }
 
         private void btnAddEndereco_Click(object sender, EventArgs e)
         {
-            FrmNovoEndereco frmNovoEndereco = new();
+            FrmNovoEndereco frmNovoEndereco = new(int.Parse(txtId.Text)); //fornece o id do cliente para o frm de endereco
             frmNovoEndereco.Show();
+
+            //Ideia: ao fechar o frm de endereco, o dgv de enderecos é atualizado
+
+            //Ocorre se o usuario apertar o botão de cancelar no dgv de endereco
+            //if (frmNovoEndereco.ShowDialog() == DialogResult.Cancel)
+            //{
+            //    //Apaga as linhas do dgv
+            //    dgvEnderecos.Rows.Clear();
+            //    //Atualiza o grid após o fechamento do frmNovoEndereco
+            //    CarregaGridEnderecos(Endereco.ListarPorClienteId(int.Parse(txtId.Text))); 
+            //}
         }
 
         private void dgvEnderecosPorCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmNovoEndereco frmNovoEndereco = new();
-            frmNovoEndereco.Show();        
+            int linhaAtual = dgvEnderecos.CurrentRow.Index;
+            int id = Convert.ToInt32(dgvEnderecos.Rows[linhaAtual].Cells[0].Value); //pega o id do endereco atravé do dgv
+            var endereco = Endereco.ConsultarPorId(id);
+            FrmNovoEndereco frmNovoEndereco = new(endereco); //fornece o objeto endereco para o frm de endereco
+            frmNovoEndereco.Show();
         }
 
         //Atualiza os dados do cliente
@@ -145,16 +169,30 @@ namespace SysTINSApp
             }
         }
 
+        //Torna o cliente inativo
         private void btnArquivar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new();
-            cliente.Id = int.Parse(txtId.Text);
+            cliente.Id = Convert.ToInt32(txtId.Text);
             cliente.Arquivar(cliente.Id);
             if (cliente.Ativo == false)
             {
                 CarregaGridClientes();
                 MessageBox.Show("Cliente arquivado com sucesso");
             }
+        }
+
+        //Tira todas as informações dos textbox e grid de enderecos
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            txtId.Text = "";
+            txtNome.Text = "";
+            txtEmail.Text = "";
+            txtCpf.Text = "";
+            txtTelefone.Text = "";
+            dgvEnderecos.Rows.Clear(); //Apaga os enderecos do dgvEnderecos
+            lblAvisoContent.Visible = false; //Deixa o aviso do dgvEndereco invisivel
+            btnInserir.Enabled = true;
         }
     }
 }
