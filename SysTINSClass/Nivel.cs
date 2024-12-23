@@ -15,9 +15,9 @@ namespace SysTINSClass
 
         public Nivel() { } //Metodo construtor(new)
 
-        public Nivel(int id, string? sigla)
+        public Nivel(string? nome, string? sigla)
         {
-            Id = id;
+            Nome = nome;
             Sigla = sigla;
         }
         public Nivel(int id, string? nome, string? sigla)
@@ -74,15 +74,15 @@ namespace SysTINSClass
         {                       
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"update niveis set nome '{Nome}', sigla '{Sigla}' where id = {Id}";
+            cmd.CommandText = $"update niveis set nome = '{Nome}', sigla = '{Sigla}' where id = {Id}";
             cmd.ExecuteNonQuery();
             return cmd.ExecuteNonQuery() > 0 ? true : false;            
         }
         //Deletar
-        public void Excluir(int id)
+        public void Excluir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"delete from niveis where id = {id}";
+            cmd.CommandText = $"delete from niveis where id = {Id}";
             cmd.ExecuteNonQuery();
         }
     }

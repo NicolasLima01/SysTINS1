@@ -81,5 +81,12 @@ namespace SysTINSApp
             frmNovoEndereco.MdiParent = this;
             frmNovoEndereco.Show();
         }
+
+        private void niveisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNiveis frmNiveis = new();
+            frmNiveis.MdiParent = this;
+            frmNiveis.Show();
+        }
     }
 }

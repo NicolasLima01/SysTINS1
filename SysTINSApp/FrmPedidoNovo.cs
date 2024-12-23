@@ -33,15 +33,15 @@ namespace SysTINSApp
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            /*
-            //Resolução antes do Well
+            /* Resolução antes do Well
+
             Produto produto = new();
             produto.Cod_barras = txtCodBar.Text;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select id from produtos where cod_barras = {produto.Cod_barras}";
-            produto = Produto.ConsultarPorID(Convert.ToInt32(cmd.ExecuteScalar()));
-            */
+            produto = Produto.ConsultarPorID(Convert.ToInt32(cmd.ExecuteScalar())); */
+
             ItemPedido itemPedido = new(Convert.ToInt32(txtIdPedido.Text),
                                         Produto.ConsultarPorCodBar(txtCodBar.Text),
                                         Convert.ToDouble(txtQuantidade.Text),
@@ -72,14 +72,13 @@ namespace SysTINSApp
             itemPedido.PedidoId = Convert.ToInt32(txtIdPedido.Text);
             itemPedido.Produto = Produto.ConsultarPorCodBar(txtCodBar.Text);
 
-            /*
-            //resolucao antes do Well
+            /* Resolucao antes do Well
+             
             itemPedido.Produto.Cod_barras = txtCodBar.Text;
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select id from produtos where cod_barras = {itemPedido.Produto.Cod_barras}";
             itemPedido.Produto = Produto.ConsultarPorID(Convert.ToInt32(cmd.ExecuteScalar()));
-            cmd.Connection.Close();
-            */
+            cmd.Connection.Close(); */
 
             //carregando o datagrid de pedidos
             dgvItensPedido.Rows.Clear();
@@ -202,7 +201,7 @@ namespace SysTINSApp
         //Ocorre quando o controle sai do txtCodBar
         private void txtCodBar_Leave(object sender, EventArgs e)
         {
-            dgvConsultaProduto.Visible = false;
+            dgvConsultaProduto.Visible = false; //Deixa o data grid de consulta desativado
         }
 
         //Ocorre ao clicar no conteudo de dgvConsultaProduto
