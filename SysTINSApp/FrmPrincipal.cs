@@ -88,5 +88,12 @@ namespace SysTINSApp
             frmNiveis.MdiParent = this;
             frmNiveis.Show();
         }
+
+        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscaCliente frmBuscaCliente = new();
+            frmBuscaCliente.MdiParent = this;
+            frmBuscaCliente.Show();
+        }
     }
 }
