@@ -33,6 +33,7 @@
             clnNome = new DataGridViewTextBoxColumn();
             clnCpf = new DataGridViewTextBoxColumn();
             clnTelefon = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
             clnDataNasc = new DataGridViewTextBoxColumn();
             clnDataCadastro = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewTextBoxColumn();
@@ -46,14 +47,14 @@
             dgvBuscaClientes.AllowUserToResizeColumns = false;
             dgvBuscaClientes.AllowUserToResizeRows = false;
             dgvBuscaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBuscaClientes.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnCpf, clnTelefon, clnDataNasc, clnDataCadastro, clnAtivo });
+            dgvBuscaClientes.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnCpf, clnTelefon, clnEmail, clnDataNasc, clnDataCadastro, clnAtivo });
             dgvBuscaClientes.Dock = DockStyle.Fill;
             dgvBuscaClientes.Location = new Point(0, 0);
             dgvBuscaClientes.Name = "dgvBuscaClientes";
             dgvBuscaClientes.ReadOnly = true;
             dgvBuscaClientes.RowHeadersVisible = false;
             dgvBuscaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBuscaClientes.Size = new Size(800, 450);
+            dgvBuscaClientes.Size = new Size(834, 411);
             dgvBuscaClientes.TabIndex = 0;
             // 
             // clnId
@@ -70,7 +71,7 @@
             clnNome.HeaderText = "Nome";
             clnNome.Name = "clnNome";
             clnNome.ReadOnly = true;
-            clnNome.Width = 200;
+            clnNome.Width = 125;
             // 
             // clnCpf
             // 
@@ -78,7 +79,6 @@
             clnCpf.HeaderText = "CPF";
             clnCpf.Name = "clnCpf";
             clnCpf.ReadOnly = true;
-            clnCpf.Width = 110;
             // 
             // clnTelefon
             // 
@@ -86,7 +86,14 @@
             clnTelefon.HeaderText = "Telefone";
             clnTelefon.Name = "clnTelefon";
             clnTelefon.ReadOnly = true;
-            clnTelefon.Width = 110;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "E-mail";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 140;
             // 
             // clnDataNasc
             // 
@@ -110,13 +117,13 @@
             clnAtivo.HeaderText = "Ativo";
             clnAtivo.Name = "clnAtivo";
             clnAtivo.ReadOnly = true;
-            clnAtivo.Width = 60;
+            clnAtivo.Width = 50;
             // 
             // FrmBuscaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(834, 411);
             Controls.Add(dgvBuscaClientes);
             Name = "FrmBuscaCliente";
             Text = "FrmBuscaCliente";
@@ -132,6 +139,7 @@
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnCpf;
         private DataGridViewTextBoxColumn clnTelefon;
+        private DataGridViewTextBoxColumn clnEmail;
         private DataGridViewTextBoxColumn clnDataNasc;
         private DataGridViewTextBoxColumn clnDataCadastro;
         private DataGridViewTextBoxColumn clnAtivo;

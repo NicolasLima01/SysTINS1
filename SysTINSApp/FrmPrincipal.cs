@@ -95,5 +95,12 @@ namespace SysTINSApp
             frmBuscaCliente.MdiParent = this;
             frmBuscaCliente.Show();
         }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaUsuario frmConsultaUsuario = new();
+            frmConsultaUsuario.MdiParent = this;
+            frmConsultaUsuario.Show();
+        }
     }
 }

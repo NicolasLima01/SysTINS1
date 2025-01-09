@@ -90,21 +90,21 @@
             // novoToolStripMenuItem
             // 
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(180, 22);
+            novoToolStripMenuItem.Size = new Size(165, 22);
             novoToolStripMenuItem.Text = "&Novo";
             novoToolStripMenuItem.Click += novoToolStripMenuItem_Click;
             // 
             // buscarToolStripMenuItem
             // 
             buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(180, 22);
+            buscarToolStripMenuItem.Size = new Size(165, 22);
             buscarToolStripMenuItem.Text = "&Buscar";
             buscarToolStripMenuItem.Click += buscarToolStripMenuItem_Click;
             // 
             // novoEnderereçoToolStripMenuItem
             // 
             novoEnderereçoToolStripMenuItem.Name = "novoEnderereçoToolStripMenuItem";
-            novoEnderereçoToolStripMenuItem.Size = new Size(180, 22);
+            novoEnderereçoToolStripMenuItem.Size = new Size(165, 22);
             novoEnderereçoToolStripMenuItem.Text = "Novo &Enderereço";
             novoEnderereçoToolStripMenuItem.Click += novoEnderereçoToolStripMenuItem_Click;
             // 
@@ -145,20 +145,21 @@
             // novoToolStripMenuItem2
             // 
             novoToolStripMenuItem2.Name = "novoToolStripMenuItem2";
-            novoToolStripMenuItem2.Size = new Size(125, 22);
+            novoToolStripMenuItem2.Size = new Size(180, 22);
             novoToolStripMenuItem2.Text = "&Novo";
             novoToolStripMenuItem2.Click += novoToolStripMenuItem2_Click_1;
             // 
             // consultarToolStripMenuItem
             // 
             consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            consultarToolStripMenuItem.Size = new Size(125, 22);
+            consultarToolStripMenuItem.Size = new Size(180, 22);
             consultarToolStripMenuItem.Text = "&Consultar";
+            consultarToolStripMenuItem.Click += consultarToolStripMenuItem_Click;
             // 
             // niveisToolStripMenuItem
             // 
             niveisToolStripMenuItem.Name = "niveisToolStripMenuItem";
-            niveisToolStripMenuItem.Size = new Size(125, 22);
+            niveisToolStripMenuItem.Size = new Size(180, 22);
             niveisToolStripMenuItem.Text = "&Niveis";
             niveisToolStripMenuItem.Click += niveisToolStripMenuItem_Click;
             // 

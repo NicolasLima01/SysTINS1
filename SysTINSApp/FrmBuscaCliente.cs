@@ -22,6 +22,7 @@ namespace SysTINSApp
         {
             CarregaGridBusca();
         }
+
         private void CarregaGridBusca()
         {
             dgvBuscaClientes.Rows.Clear();
@@ -35,9 +36,10 @@ namespace SysTINSApp
                 dgvBuscaClientes.Rows[linha].Cells[1].Value = cliente.Nome;
                 dgvBuscaClientes.Rows[linha].Cells[2].Value = cliente.CPF;
                 dgvBuscaClientes.Rows[linha].Cells[3].Value = cliente.Telefone;
-                dgvBuscaClientes.Rows[linha].Cells[4].Value = cliente.Data_nasc;
-                dgvBuscaClientes.Rows[linha].Cells[5].Value = cliente.Data_cad;
-                dgvBuscaClientes.Rows[linha].Cells[6].Value = cliente.Ativo;
+                dgvBuscaClientes.Rows[linha].Cells[4].Value = cliente.Email;
+                dgvBuscaClientes.Rows[linha].Cells[5].Value = cliente.Data_nasc;
+                dgvBuscaClientes.Rows[linha].Cells[6].Value = cliente.Data_cad;
+                dgvBuscaClientes.Rows[linha].Cells[7].Value = cliente.Ativo;
                 linha++;
             }
         }
