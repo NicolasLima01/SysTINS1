@@ -29,10 +29,10 @@ namespace SysTINSApp
                 dgvConsultaUsuario.Rows.Add();
                 dgvConsultaUsuario.Rows[linha].Cells[0].Value = usuario.Id;
                 dgvConsultaUsuario.Rows[linha].Cells[1].Value = usuario.Nome;
-                dgvConsultaUsuario.Rows[linha].Cells[3].Value = usuario.Email;
-                dgvConsultaUsuario.Rows[linha].Cells[4].Value = usuario.Senha;
-                dgvConsultaUsuario.Rows[linha].Cells[5].Value = usuario.Nivel.Nome;
-                dgvConsultaUsuario.Rows[linha].Cells[6].Value = usuario.Ativo;
+                dgvConsultaUsuario.Rows[linha].Cells[2].Value = usuario.Email;
+                dgvConsultaUsuario.Rows[linha].Cells[3].Value = usuario.Senha;
+                dgvConsultaUsuario.Rows[linha].Cells[4].Value = usuario.Nivel.Nome;
+                dgvConsultaUsuario.Rows[linha].Cells[5].Value = usuario.Ativo;
                 linha++;
             }
         }
