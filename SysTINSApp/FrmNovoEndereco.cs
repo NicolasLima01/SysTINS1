@@ -78,6 +78,16 @@ namespace SysTINSApp
             {
                 MessageBox.Show($"Endereço adicionado com sucesso");
                 btnAdicionar.Enabled = false;
+                txtId.Text = "";
+                txtClienteId.Text = "";
+                txtCep.Text = "";
+                txtLogradouro.Text = "";
+                txtNumero.Text = "";
+                txtComplemento.Text = "";
+                txtBairro.Text = "";
+                txtCidade.Text = "";
+                cmbUf.SelectedItem = "";
+                cmbTipoEndereco.SelectedItem = "";
             }
             else
             {
@@ -107,7 +117,7 @@ namespace SysTINSApp
         {
             Endereco endereco = new();
             endereco.Id = Convert.ToInt32(txtId.Text);
-            endereco.Excluir(endereco.Id);
+            endereco.Excluir(endereco.Id);            
         }     
     }
 }

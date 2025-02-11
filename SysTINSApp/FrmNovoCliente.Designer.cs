@@ -54,6 +54,7 @@
             chkAtivo = new CheckBox();
             btnAddEndereco = new Button();
             grbEndereco = new GroupBox();
+            lblAvisoContent = new Label();
             dgvEnderecos = new DataGridView();
             clnEnderecoId = new DataGridViewTextBoxColumn();
             clnClienteId = new DataGridViewTextBoxColumn();
@@ -67,7 +68,6 @@
             clnTipoEndereco = new DataGridViewTextBoxColumn();
             btnAtualizar = new Button();
             btnArquivar = new Button();
-            lblAvisoContent = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             grbEndereco.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
@@ -79,35 +79,35 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(63, 23);
-            txtId.TabIndex = 0;
+            txtId.TabIndex = 9;
             // 
             // txtNome
             // 
             txtNome.Location = new Point(158, 82);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(276, 23);
-            txtNome.TabIndex = 1;
+            txtNome.TabIndex = 0;
             // 
             // txtCpf
             // 
             txtCpf.Location = new Point(197, 193);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(114, 23);
-            txtCpf.TabIndex = 2;
+            txtCpf.TabIndex = 3;
             // 
             // txtTelefone
             // 
             txtTelefone.Location = new Point(77, 193);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(114, 23);
-            txtTelefone.TabIndex = 3;
+            txtTelefone.TabIndex = 2;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(77, 138);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(271, 23);
-            txtEmail.TabIndex = 4;
+            txtEmail.TabIndex = 1;
             // 
             // lblId
             // 
@@ -124,7 +124,7 @@
             lblNome.Location = new Point(158, 64);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(40, 15);
-            lblNome.TabIndex = 9;
+            lblNome.TabIndex = 7;
             lblNome.Text = "Nome";
             // 
             // lblCpf
@@ -168,7 +168,7 @@
             btnInserir.Location = new Point(77, 254);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(75, 23);
-            btnInserir.TabIndex = 14;
+            btnInserir.TabIndex = 5;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
@@ -178,7 +178,7 @@
             btnCancelar.Location = new Point(359, 254);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 15;
+            btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click_1;
@@ -269,7 +269,7 @@
             dtpData_Nasc.MaxDate = new DateTime(2006, 11, 13, 0, 0, 0, 0);
             dtpData_Nasc.Name = "dtpData_Nasc";
             dtpData_Nasc.Size = new Size(114, 23);
-            dtpData_Nasc.TabIndex = 17;
+            dtpData_Nasc.TabIndex = 4;
             dtpData_Nasc.Value = new DateTime(2005, 12, 31, 0, 0, 0, 0);
             // 
             // chkAtivo
@@ -281,7 +281,7 @@
             chkAtivo.Location = new Point(380, 142);
             chkAtivo.Name = "chkAtivo";
             chkAtivo.Size = new Size(54, 19);
-            chkAtivo.TabIndex = 18;
+            chkAtivo.TabIndex = 10;
             chkAtivo.Text = "Ativo";
             chkAtivo.UseVisualStyleBackColor = true;
             // 
@@ -290,7 +290,7 @@
             btnAddEndereco.Location = new Point(17, 185);
             btnAddEndereco.Name = "btnAddEndereco";
             btnAddEndereco.Size = new Size(409, 32);
-            btnAddEndereco.TabIndex = 19;
+            btnAddEndereco.TabIndex = 0;
             btnAddEndereco.Text = "Adicionar";
             btnAddEndereco.UseVisualStyleBackColor = true;
             btnAddEndereco.Click += btnAddEndereco_Click;
@@ -308,6 +308,17 @@
             grbEndereco.TabIndex = 20;
             grbEndereco.TabStop = false;
             grbEndereco.Text = "Endereço";
+            // 
+            // lblAvisoContent
+            // 
+            lblAvisoContent.AutoSize = true;
+            lblAvisoContent.ForeColor = Color.Red;
+            lblAvisoContent.Location = new Point(17, 168);
+            lblAvisoContent.Name = "lblAvisoContent";
+            lblAvisoContent.Size = new Size(210, 15);
+            lblAvisoContent.TabIndex = 21;
+            lblAvisoContent.Text = "*Clique no endereço para mais opções";
+            lblAvisoContent.Visible = false;
             // 
             // dgvEnderecos
             // 
@@ -411,7 +422,7 @@
             btnAtualizar.Location = new Point(172, 254);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
-            btnAtualizar.TabIndex = 21;
+            btnAtualizar.TabIndex = 6;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
             btnAtualizar.Click += btnAtualizar_Click;
@@ -421,21 +432,10 @@
             btnArquivar.Location = new Point(264, 254);
             btnArquivar.Name = "btnArquivar";
             btnArquivar.Size = new Size(75, 23);
-            btnArquivar.TabIndex = 22;
+            btnArquivar.TabIndex = 7;
             btnArquivar.Text = "Arquivar";
             btnArquivar.UseVisualStyleBackColor = true;
             btnArquivar.Click += btnArquivar_Click;
-            // 
-            // lblAvisoContent
-            // 
-            lblAvisoContent.AutoSize = true;
-            lblAvisoContent.ForeColor = Color.Red;
-            lblAvisoContent.Location = new Point(17, 168);
-            lblAvisoContent.Name = "lblAvisoContent";
-            lblAvisoContent.Size = new Size(210, 15);
-            lblAvisoContent.TabIndex = 21;
-            lblAvisoContent.Text = "*Clique no endereço para mais opções";
-            lblAvisoContent.Visible = false;
             // 
             // FrmNovoCliente
             // 
